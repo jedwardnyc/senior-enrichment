@@ -27,6 +27,10 @@ const Student = conn.define('student', {
   gpa: {
     type: Sequelize.DECIMAL(2,1)
   },
+  imageURL: {
+    type: Sequelize.STRING,
+    defaultValue: './public/images/default_student.jpg'
+  }
 },  
 {
   getterMethods: {

@@ -8,7 +8,7 @@ app.use('/vendor', express.static('node_modules'));
 app.use(require('body-parser').json());
 
 //any route with api sends to api folder
-app.use('/api', require('./api'));
+app.use('/api', require('./routes'));
 
 app.get('/', (req,res,next)=>{
   res.sendFile(path.join(__dirname, '../public/index.html'));
