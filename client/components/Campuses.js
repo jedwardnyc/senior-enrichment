@@ -17,7 +17,6 @@ class Campuses extends React.Component{
         <div style={{listStyleType: 'none', display: 'flex', flexWrap: 'wrap'}}>
           { 
             this.props.campuses.map(campus => {
-              console.log(campus)
               return ( 
                 <div className='jumbotron' key={campus.id}> 
                   <img src={campus.imageURL} width='140' height='140'/>

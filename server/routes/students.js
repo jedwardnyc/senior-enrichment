@@ -1,9 +1,12 @@
 const router = require('express').Router();
-const { Student } = require('../db/models');
+const { Student, Campus } = require('../db/models');
 
 // reminder that all of these routes start with api/students
 router.get('/', (req,res,next) => {
-  Student.findAll()
+  Student.findAll({
+    include: [{ model: Campus }],
+    order: [[ 'lastName', 'ASC' ]]
+  })
     .then(students => res.send(students))
     .catch(next)
 });

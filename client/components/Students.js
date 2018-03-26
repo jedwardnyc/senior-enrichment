@@ -17,14 +17,13 @@ class Students extends React.Component{
         <div style={{listStyleType: 'none', display: 'flex', flexWrap: 'wrap'}}>
           { 
             this.props.students.map(student => {
-              console.log(student)
               return ( 
                 <div className='jumbotron' key={student.id}> 
                   <img src={student.imageURL} width='140' height='140'/>
                   <br />
                   <Link to={`/students/${student.id}`}> {student.fullName} </Link>
                   <br />
-                  {student.gpa}
+                  {student.campus}
                 </div>
               )
             })

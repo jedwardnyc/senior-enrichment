@@ -42,23 +42,19 @@ const campuses = [
     description: "A simple school in Fresno"
   },
   {
-    name: `${faker.address.state()} University`,
-    imageURL: faker.image.imageUrl(440, 350, 'city', true),
+    name: `${faker.address.state()} Campus`,
     description: faker.lorem.paragraph(),
   },
   {
-    name: `${faker.address.state()} State University`,
-    imageURL: faker.image.imageUrl(440, 350, 'city', true),
+    name: `${faker.address.state()} Campus`,
     description: faker.lorem.paragraph(),
   },
   {
-    name: `${faker.address.state()} State University`,
-    imageURL: faker.image.imageUrl(440, 350, 'city', true),
+    name: `${faker.address.state()} Campus`,
     description: faker.lorem.paragraph(),
   },
   {
-    name: `${faker.address.state()} University`,
-    imageURL: faker.image.imageUrl(440, 350, 'city', true),
+    name: `${faker.address.state()} Campus`,
     description: faker.lorem.paragraph(),
   },
 
@@ -72,6 +68,7 @@ const seed = () => {
     Promise.all(campuses.map(campus => 
       Campus.create(campus))
     )
+  .then(() => db.close())
   );
 };
 
@@ -80,7 +77,7 @@ const run = () => {
   db.sync({force: true})
   .then(() => {
     console.log('seeding...');
-    return seed();
+    return seed()
   })
   .catch(err => console.log('!! Error while seeding !!', err))
 }
