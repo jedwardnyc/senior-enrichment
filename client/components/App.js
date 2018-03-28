@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchStudents, fetchCampuses } from '../store';
 import Nav from './Nav';
@@ -7,9 +7,11 @@ import Home from './Home';
 import Students from './Students';
 import Student from './Student';
 import EditStudent from './EditStudent';
+import CreateStudent from './CreateStudent';
 import Campuses from './Campuses';
 import Campus from './Campus';
 import EditCampus from './EditCampus';
+import CreateCampus from './CreateCampus';
 
 class App extends React.Component{
 
@@ -23,13 +25,17 @@ class App extends React.Component{
       <Router>
         <div>
           <Nav /> 
-          <Route path='/' exact component={ Home } />
-          <Route path='/students' exact component={ Students } />
-          <Route path='/students/:id' exact render={({match}) =>  <Student id={match.params.id} /> } />
-          <Route path='/students/:id/edit' component={ EditStudent } />
-          <Route path='/campuses' exact component={ Campuses } />
-          <Route path='/campuses/:id' exact render={({match}) =>  <Campus id={match.params.id} /> } />
-          <Route path='/campuses/:id/edit' render={({match}) =>  <EditCampus id={match.params.id} /> } />
+          <Switch>
+            <Route path='/' exact component={ Home } />
+            <Route path='/students' exact component={ Students } />
+            <Route path='/students/create' exact component={ CreateStudent } />
+            <Route path='/students/:id' exact render={({match}) =>  <Student id={match.params.id} /> } />
+            <Route path='/students/:id/edit' render={({match}) =>  <EditStudent id={match.params.id} /> } />
+            <Route path='/campuses' exact component={ Campuses } />
+            <Route path='/campuses/create' component={ CreateCampus } />
+            <Route path='/campuses/:id' exact render={({match}) =>  <Campus id={match.params.id} /> } />
+            <Route path='/campuses/:id/edit' render={({match}) =>  <EditCampus id={match.params.id} /> } />
+          </Switch>
         </div>
       </Router>
     )

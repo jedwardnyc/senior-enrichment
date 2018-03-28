@@ -11,7 +11,7 @@ class Students extends React.Component{
       <div>
         <div style={{display: 'flex'}}>
           <h1 style={{flex: 6 }}> All Students </h1>
-          <button style={{flex: 1 }} className='btn btn-primary'> Add Student </button>
+          <Link to='/students/create' ><button style={{flex: 1 }} className='btn btn-primary'> Add Student </button></Link>
         </div>
         <br />
         <div style={{listStyleType: 'none', display: 'flex', flexWrap: 'wrap'}}>

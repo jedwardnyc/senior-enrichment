@@ -73,12 +73,13 @@ const seed = () => {
 };
 
 const run = () => {
-  console.log('syncing...');
+  console.log('Syncing...');
   db.sync({force: true})
   .then(() => {
-    console.log('seeding...');
+    console.log('Seeding...');
     return seed()
   })
+  .then(()=> console.log('Database has seeded!'))
   .catch(err => console.log('!! Error while seeding !!', err))
 }
 

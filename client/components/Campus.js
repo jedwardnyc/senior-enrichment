@@ -7,8 +7,8 @@ const Campus = (props) => {
   return (
     <div>
       <div className='jumbotron' style={{display: 'flex'}}>
-        <img style={{flex: 1}} src={campus.imageURL} />
-        <div style={{flex: 1}}>
+        <img style={{flex: '50%'}} src={campus.imageURL} />
+        <div style={{flex: '50%'}}>
           <h1> {campus.name} </h1> 
           <p> {campus.description} </p>
         </div>
