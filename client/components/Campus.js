@@ -9,7 +9,7 @@ const Campus = (props) => {
     <div>
       <div className='jumbotron' style={{display: 'flex'}}>
         <img style={{flex: '50%'}} src={campus.imageURL} />
-        <div style={{flex: '50%'}}>
+        <div style={{flex: '50%', textAlign: 'center'}}>
           <h1> {campus.name} </h1> 
           <p> {campus.description} </p>
         </div>
@@ -20,7 +20,7 @@ const Campus = (props) => {
       </div>
       <br />
       <br />
-      <div style={{listStyleType: 'none', display: 'flex', flexWrap: 'wrap'}}>
+      <div style={{listStyleType: 'none', display: 'flex', flexWrap: 'wrap', justifyContent:'center'}}>
         { 
           campus.students.length ? 
            campus.students.map(student => {

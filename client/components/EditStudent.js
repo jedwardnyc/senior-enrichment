@@ -7,9 +7,18 @@ const EditStudent = (props) => {
     <div>
       <h1> Edit {student.fullName}? </h1>
       <form className='form-control from-group'>
-        <input className='form-control' value={student.fullName} />
-        <input className='form-control' value={student.imageURL} />
-        <input className='form-control' value={student.gpa} />
+        <input 
+          onChange={evt => this.setState({ name: evt.target.value })}
+          className='form-control' 
+          value={student.fullName} />
+        <input 
+          onChange={evt => this.setState({ imageURL: evt.target.value })}
+          className='form-control' 
+          value={student.imageURL} />
+        <input 
+          onChange={evt => this.setState({ gpa: evt.target.value })}
+          className='form-control' 
+          value={student.gpa} />
         <button className='btn btn-primary'>Save Changes</button>
       </form> 
     </div>

@@ -9,7 +9,8 @@ const students = [
     firstName: "Jacob",
     lastName: "Rico",
     email: "jacob.rico@school.edu",
-    gpa: 3.5
+    gpa: 3.5,
+    imageURL: avatar.generate_avatar({"gender":"male"})
   },
   { 
     firstName: faker.name.firstName(),
@@ -44,7 +45,7 @@ const students = [
 const campuses = [
   {
     name: "Fresno Campus",
-    description: "A simple school in Fresno"
+    description: faker.lorem.paragraph()
   },
   {
     name: `${faker.address.state()} Campus`,

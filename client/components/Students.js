@@ -15,7 +15,7 @@ class Students extends React.Component{
           <Link to='/students/create' ><button style={{flex: 1 }} className='btn btn-primary'> Add Student </button></Link>
         </div>
         <br />
-        <div style={{listStyleType: 'none'}}>
+        <div style={{listStyleType: 'none', display:'flex', flexWrap:'wrap', justifyContent:'space-evenly'}}>
           { 
             this.props.students.map(student => {
               return ( 

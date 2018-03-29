@@ -24,7 +24,8 @@ class App extends React.Component{
     return (
       <Router>
         <div>
-          <Nav /> 
+          <Nav />
+          <div className='container-fluid'>
           <Switch>
             <Route path='/' exact component={ Home } />
             <Route path='/students' exact component={ Students } />
@@ -36,6 +37,7 @@ class App extends React.Component{
             <Route path='/campuses/:id' exact render={({match}) =>  <Campus id={match.params.id} /> } />
             <Route path='/campuses/:id/edit' render={({match}) =>  <EditCampus id={match.params.id} /> } />
           </Switch>
+          </div>
         </div>
       </Router>
     )

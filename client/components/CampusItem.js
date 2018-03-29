@@ -11,16 +11,19 @@ class CampusItem extends React.Component {
   render () {
     const { campus } = this.props;
     return (
-      <div className='jumbotron' >
-      <div>
-        <div>
-          <img src={campus.imageURL} />
+      <div style={{width: '50%',  border: '1px solid'}} className='jumbotron' >
+      <div style={{display:'flex'}}>
+        <div style={{width: '50%'}}>
+          <img width='100%' src={campus.imageURL} />
         </div>
-        <br />
-        <div>
+        <div style={{width: '50%'}}>
         <Link to={`/campuses/${campus.id}`}>
-          <h1 style={{textAlign: 'center'}}> {campus.name} </h1>
+          <h3 style={{textAlign: 'center'}}> {campus.name} </h3>
         </Link>
+          { campus.students ? 
+            <h6 style={{textAlign: 'center'}}>{campus.students.length} Enrolled Students</h6>
+            : null 
+          }
         </div>
       </div>
       </div>

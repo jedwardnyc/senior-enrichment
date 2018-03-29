@@ -7,6 +7,7 @@ const Student = (props) => {
   const { student } = props;
   console.log(student)
   return (
+    <div>
     <div className='jumbotron' >
       <div style={{display: 'flex'}}>
         <div style={{flex: 1}}>
@@ -24,18 +25,22 @@ const Student = (props) => {
       </div>
       <br />
       <br />
-      <div style={{display: 'flex', justifyContent:'center'}}>
-        {
-          !student.campus ? 
-          <h3 style={{textAlign: 'center'}}> This student is not registered to a campus </h3>
-          :  
-          <div className='jumbotron' > 
-            <h3 style={{textAlign: 'center'}}> This student is registered to: </h3>
-            <CampusItem campus={student.campus} />
-          </div>
-        }
-      </div>
+     
     </div>
+    <div>
+    {
+      !student.campus ? 
+      <h3 style={{textAlign: 'center'}}> This student is not registered to a campus </h3>
+      :  
+      <div> 
+        <h3 style={{textAlign: 'center'}}> This student is registered to: </h3>
+        <br />
+        <CampusItem campus={student.campus} />
+      </div>
+      
+    }
+    </div>
+  </div>
   )
 }
 
