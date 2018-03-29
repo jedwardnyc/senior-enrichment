@@ -8,7 +8,7 @@
     "postinstall": "npm run webpack",
     "webpack": "./node_modules/webpack/bin/webpack.js",
     "start:dev": "npm run webpack -- -w & nodemon server/index",
-    "start": "node server/index & seed"
+    "start": "node server/index && npm run seed"
   },
   "repository": {
     "type": "git",
