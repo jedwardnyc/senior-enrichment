@@ -2,6 +2,7 @@ const db = require('./server/db');
 const Student = require('./server/db/models/Student');
 const Campus = require('./server/db/models/Campus');
 const faker = require('faker');
+const avatar = require('cartoon-avatar');
 
 const students = [
   { 
@@ -14,31 +15,35 @@ const students = [
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     email: faker.internet.email(),
-    gpa: Number(((Math.random()*10)%2).toFixed(1))+2
+    gpa: Number(((Math.random()*10)%2).toFixed(1))+2,
+    imageURL: avatar.generate_avatar()
   },
   { 
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     email: faker.internet.email(),
-    gpa: Number(((Math.random()*10)%2).toFixed(1))+2
+    gpa: Number(((Math.random()*10)%2).toFixed(1))+2,
+    imageURL: avatar.generate_avatar()
   },
   { 
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     email: faker.internet.email(),
-    gpa: Number(((Math.random()*10)%2).toFixed(1))+2
+    gpa: Number(((Math.random()*10)%2).toFixed(1))+2,
+    imageURL: avatar.generate_avatar()
   },
   { 
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     email: faker.internet.email(),
-    gpa: Number(((Math.random()*10)%2).toFixed(1))+2
+    gpa: Number(((Math.random()*10)%2).toFixed(1))+2,
+    imageURL: avatar.generate_avatar()
   },
 ]
 
 const campuses = [
   {
-    name: "Fresno State",
+    name: "Fresno Campus",
     description: "A simple school in Fresno"
   },
   {
@@ -61,13 +66,13 @@ const campuses = [
 ]
 
 const seed = () => {
-  Promise.all(students.map(student => 
-    Student.create(student))
+  Promise.all(campuses.map(campus => 
+    Campus.create(campus))
   )
-  .then(() => 
-    Promise.all(campuses.map(campus => 
-      Campus.create(campus))
-    )
+  .then(() => Promise.all(students.map(student => 
+      Student.create(student)
+      .then(student => student.setCampus(1))
+    ))
   .then(() => db.close())
   );
 };

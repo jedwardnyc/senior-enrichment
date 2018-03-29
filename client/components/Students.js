@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import StudentItem from './StudentItem';
 
 class Students extends React.Component{
   constructor(props){
@@ -14,17 +15,11 @@ class Students extends React.Component{
           <Link to='/students/create' ><button style={{flex: 1 }} className='btn btn-primary'> Add Student </button></Link>
         </div>
         <br />
-        <div style={{listStyleType: 'none', display: 'flex', flexWrap: 'wrap'}}>
+        <div style={{listStyleType: 'none'}}>
           { 
             this.props.students.map(student => {
               return ( 
-                <div className='jumbotron' key={student.id}> 
-                  <img src={student.imageURL} width='140' height='140'/>
-                  <br />
-                  <Link to={`/students/${student.id}`}> {student.fullName} </Link>
-                  <br />
-                  {student.campus}
-                </div>
+                <StudentItem key={student.id} student={student}/>
               )
             })
           }

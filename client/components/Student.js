@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import CampusItem from './CampusItem';
 
 const Student = (props) => {
   const { student } = props;
@@ -12,7 +13,8 @@ const Student = (props) => {
           <img src={student.imageURL} />
         </div>
         <div style={{flex: 1}}>
-          <h1> {student.fullName} </h1>
+          <h2> {student.fullName} </h2>
+          <h3> {student.email} </h3>
           <h3> GPA: {student.gpa} </h3>
         </div>
       </div>
@@ -25,18 +27,11 @@ const Student = (props) => {
       <div style={{display: 'flex', justifyContent:'center'}}>
         {
           !student.campus ? 
-          <h3> This student is not registered to a campus </h3>
+          <h3 style={{textAlign: 'center'}}> This student is not registered to a campus </h3>
           :  
           <div className='jumbotron' > 
-            <h3> This student is registered to: </h3>
-            <div>
-              <img src={student.campus.imageURL} width='140' height='140'/> 
-            </div>
-            <div>
-              <Link to={`/campuses/${student.campus.id}`}> {student.campus.name} </Link>
-              <br />
-              <Link to={`/campuses/${student.campus.id}/edit`}> edit </Link>
-            </div>
+            <h3 style={{textAlign: 'center'}}> This student is registered to: </h3>
+            <CampusItem campus={student.campus} />
           </div>
         }
       </div>

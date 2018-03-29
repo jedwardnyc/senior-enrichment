@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Students from './Students';
+import { Link } from 'react-router-dom';
 
 const Campus = (props) => {
   const { campus } = props
