@@ -21,7 +21,7 @@ class StudentItem extends React.Component {
           <Link to={`/students/${student.id}`}>
             <h3> {student.fullName} </h3>
           </Link>
-          <h6> Campus: {student.campus.name ? student.campus.name : 'This student is not enrolled'} </h6>
+          <h6> Campus: {student.campus ? student.campus.name : 'This student is not enrolled'} </h6>
         </div>
       </div>
       </div>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Nav = (props) => {
   return (
  
-    <nav className="navbar navbar-light bg-light justify-content-between">
+    <nav style={{marginBottom:'25px'}} className="navbar navbar-light bg-light justify-content-between">
       <a className="navbar-brand" href="/">Home</a>
       <ul className='nav'>
         <li className='nav-item'>

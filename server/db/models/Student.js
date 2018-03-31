@@ -37,6 +37,14 @@ const Student = conn.define('student', {
     fullName(){
       return `${this.firstName} ${this.lastName}`;
     },
+  },
+  setterMethods: {
+    fullName(value){
+      console.log(value)
+      const names = value.split(' ');
+      this.setDataValue('firstName', names[0]);
+      this.setDataValue('lastName', names[1]);
+    },
   }
 });
 

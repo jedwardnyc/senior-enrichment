@@ -29,8 +29,8 @@ class App extends React.Component{
           <Switch>
             <Route path='/' exact component={ Home } />
             <Route path='/students' exact component={ Students } />
-            <Route path='/students/create' exact component={ CreateStudent } />
-            <Route path='/students/:id' exact render={({match}) =>  <Student id={match.params.id} /> } />
+            <Route path='/students/create' exact render={({history}) =>  <CreateStudent history={history} /> } />
+            <Route path='/students/:id' exact render={({match, history}) =>  <Student history={history} id={match.params.id} /> } />
             <Route path='/students/:id/edit' render={({match}) =>  <EditStudent id={match.params.id} /> } />
             <Route path='/campuses' exact component={ Campuses } />
             <Route path='/campuses/create' component={ CreateCampus } />

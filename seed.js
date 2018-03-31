@@ -40,7 +40,7 @@ const students = [
     gpa: Number(((Math.random()*10)%2).toFixed(1))+2,
     imageURL: avatar.generate_avatar()
   },
-]
+];
 
 const campuses = [
   {
@@ -63,8 +63,7 @@ const campuses = [
     name: `${faker.address.state()} Campus`,
     description: faker.lorem.paragraph(),
   },
-
-]
+];
 
 const seed = () => {
   Promise.all(campuses.map(campus => 
@@ -72,7 +71,10 @@ const seed = () => {
   )
   .then(() => Promise.all(students.map(student => 
       Student.create(student)
-      .then(student => student.setCampus(1))
+      .then(student => {
+        const randomCampus = Math.floor(Math.random()*campuses.length)+1
+        student.setCampus(randomCampus)
+      })
     ))
   .then(() => db.close())
   );
@@ -87,6 +89,6 @@ const run = () => {
   })
   .then(()=> console.log('Database has seeded!'))
   .catch(err => console.log('!! Error while seeding !!', err))
-}
+};
 
 run();
