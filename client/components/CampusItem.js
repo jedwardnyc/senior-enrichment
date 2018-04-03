@@ -11,7 +11,7 @@ class CampusItem extends React.Component {
   render () {
     const { campus } = this.props;
     return (
-      <div style={{width: '50%',  border: '1px solid'}} className='jumbotron' >
+      <div style={{paddingBottom:'50px'}}>
       <div style={{display:'flex'}}>
         <div style={{width: '50%'}}>
           <img width='100%' src={campus.imageURL} />

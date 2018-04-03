@@ -13,12 +13,7 @@ class CreateStudent extends Component {
     ev.preventDefault();
     this.props.createStudent(this.state);
   }
-
-  onDelete(ev,id){
-    ev.preventDefault();
-    this.props.deleteStudent(id);
-  }
-
+  
   render(){
     return (
       <div>
@@ -51,7 +46,7 @@ class CreateStudent extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, {history}) => {
+const mapDispatchToProps = (dispatch, { history }) => {
   return {
     createStudent: (student) => dispatch(createStudent(student,history)) 
   }

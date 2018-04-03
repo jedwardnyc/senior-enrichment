@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const conn = require('../conn');
+const avatar = require('cartoon-avatar');
 
 const Student = conn.define('student', {
   firstName: {
@@ -25,11 +26,12 @@ const Student = conn.define('student', {
     }
   },
   gpa: {
-    type: Sequelize.DECIMAL(2,1)
+    type: Sequelize.DECIMAL(2,1),
+    allowNull: false
   },
   imageURL: {
     type: Sequelize.STRING,
-    defaultValue: './public/images/default_student.jpg'
+    defaultValue: avatar.generate_avatar()
   }
 },  
 {
@@ -39,8 +41,7 @@ const Student = conn.define('student', {
     },
   },
   setterMethods: {
-    fullName(value){
-      console.log(value)
+    fullName: function (value){
       const names = value.split(' ');
       this.setDataValue('firstName', names[0]);
       this.setDataValue('lastName', names[1]);

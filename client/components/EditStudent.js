@@ -1,16 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { updateStudent } from '../store/students';
 
 class EditStudent extends React.Component {
   constructor(props){
     super(props);
-    this.state = this.props.student
+    this.state = this.props.student;
+    this.update = this.update.bind(this);
   };
 
-  onSave(ev){
+  update(ev){
     ev.preventDefault();
-
-  }
+    this.props.updateStudent(this.state);
+    console.log(this.state)
+  };
 
   render(){
     const { student } = this.props
@@ -19,7 +22,7 @@ class EditStudent extends React.Component {
     return (
       <div>
         <h1> Edit {student.fullName}? </h1>
-        <form className='form-control from-group'>
+        <form onSubmit={this.update} className='form-control from-group'>
           <label>Full Name: </label>
           <input 
             onChange={ev => this.setState({ fullName: ev.target.value })}
@@ -43,6 +46,7 @@ class EditStudent extends React.Component {
             onChange={ev => this.setState({ gpa: ev.target.value })}
             className='form-control' 
             value={gpa} />
+          <br />
           <button className='btn btn-primary'>Save Changes</button>
         </form> 
       </div>
@@ -56,4 +60,10 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(EditStudent)
+const mapDispatchToProps = (dispatch, { history }) => {
+  return {
+    updateStudent: (student) => dispatch(updateStudent(student, history))
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(EditStudent)

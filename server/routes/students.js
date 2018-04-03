@@ -18,6 +18,7 @@ router.post('/', (req,res,next)=>{
 });
 
 router.put('/:id', (req,res,next) => {
+  console.log(req.body)
   Student.findById(req.params.id)
     .then(student => student.update(req.body))
     .then(student => res.send(student))

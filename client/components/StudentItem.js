@@ -9,21 +9,18 @@ class StudentItem extends React.Component {
   }
 
   render () {
-    const { student } = this.props;
+    const { student, campus } = this.props;
+    
     return (
-      <div  style={{width: '33%',  border: '1px solid'}} className='jumbotron'>
-      <div>
-        <div style={{textAlign:'center'}}>
-          <img src={student.imageURL} />
-        </div>
+      <div style={{width: '30%', display: 'flex', flexDirection:'column', alignItems:'center', paddingBottom:'15px'}}>
+        <img style={{flex:'0 1 auto'}} width="50%" src={student.imageURL} />
         <br />
-        <div style={{textAlign: 'center'}}>
-          <Link to={`/students/${student.id}`}>
-            <h3> {student.fullName} </h3>
+        <div>
+          <Link style={{textAlign: 'center'}} to={`/students/${student.id}`}>
+            <h4> {student.fullName} </h4>
           </Link>
-          <h6> Campus: {student.campus ? student.campus.name : 'This student is not enrolled'} </h6>
+          <h6> Campus: {campus ? campus.name : 'This student is not enrolled'} </h6>
         </div>
-      </div>
       </div>
     );
   }
