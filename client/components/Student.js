@@ -13,13 +13,11 @@ class Student extends Component {
 
   update(ev){
     ev.preventDefault();
-    console.log(this.state)
     this.props.updateStudent(this.state)
   };
 
   render(){
     const { student, campuses, deleteStudent } = this.props;
-    console.log(student)
     if (student) {
       return (
         <div>
@@ -50,7 +48,7 @@ class Student extends Component {
             <h3 style={{textAlign: 'center'}}> This student is not registered to a campus! </h3>
             <form onSubmit={this.update}>
               <h4 style={{textAlign: 'center'}}> Please add them to a Campus: </h4>
-              <select onChange={ev => ev.target.value ? this.setState({ campusId: ev.target.value }) : null} style={{align: 'center'}}>
+              <select onChange={ev => this.setState({ campusId: ev.target.value*1 })} style={{align: 'center'}}>
                 <option value='-1'> --- Select a Campus --- </option> 
                 {
                   campuses.map(campus => {
@@ -72,7 +70,7 @@ class Student extends Component {
               <div style={{paddingLeft: '25px', width:'40%'}}>
               <form onSubmit={this.update}>
                 <h3> Select a Campus: </h3>
-                <select onChange={ev => this.setState({ campusId: ev.target.value })}>
+                <select onChange={ev => this.setState({ campusId: ev.target.value*1 })}>
                   <option value='-1'> --- Select a Campus --- </option> 
                   {
                     campuses.map(campus => {

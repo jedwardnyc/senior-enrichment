@@ -12,11 +12,11 @@ class CampusItem extends React.Component {
     const { campus } = this.props;
     return (
       <div style={{paddingBottom:'50px'}}>
-      <div style={{display:'flex'}}>
+      <div style={{display:'flex', flexDirection: 'row'}}>
         <div style={{width: '50%'}}>
           <img width='100%' src={campus.imageURL} />
         </div>
-        <div style={{width: '50%'}}>
+        <div style={{display: 'flex', flexDirection:'column', width: '50%', justifyContent: 'center'}}>
         <Link to={`/campuses/${campus.id}`}>
           <h3 style={{textAlign: 'center'}}> {campus.name} </h3>
         </Link>

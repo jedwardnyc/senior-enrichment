@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_CAMPUSES, CREATE_CAMPUS, EDIT_CAMPUS, DELETE_CAMPUS } from './constants';
+import { GET_CAMPUSES, CREATE_CAMPUS, EDIT_CAMPUS, DELETE_CAMPUS, EDIT_STUDENT } from './constants';
 
 export const fetchCampuses = () => {
   return (dispatch) => {
@@ -52,6 +52,8 @@ const campusReducer = (state = [], action) => {
       return state.filter(campus => campus.id !== action.campus.id*1)
     case EDIT_CAMPUS:
       return state.map(campus => campus.id === action.campus.id*1 ? action.campus : campus)
+    case EDIT_STUDENT:
+      return state
     default:
       return state;
   }

@@ -35,7 +35,7 @@ const Campus = (props) => {
            campus.students.map(student => {
             console.log(student)
             return ( 
-              <StudentItem key={student.id} campus={campus} student={student}/>
+              <StudentItem key={student.id} path={location.hash} student={student}/>
             ) 
           }) : <div style={{padding: '120px'}}> There are no students currently enrolled at {campus.name} </div>
         }

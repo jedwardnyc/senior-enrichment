@@ -10,7 +10,7 @@ class StudentItem extends React.Component {
 
   render () {
     const { student, campus } = this.props;
-    
+    const path = location.hash;
     return (
       <div style={{width: '30%', display: 'flex', flexDirection:'column', alignItems:'center', paddingBottom:'15px'}}>
         <img style={{flex:'0 1 auto'}} width="50%" src={student.imageURL} />
@@ -19,7 +19,9 @@ class StudentItem extends React.Component {
           <Link style={{textAlign: 'center'}} to={`/students/${student.id}`}>
             <h4> {student.fullName} </h4>
           </Link>
-          <h6> Campus: {campus ? campus.name : 'This student is not enrolled'} </h6>
+          {
+            path.includes('campuses') ? null : <h6> {campus ? `Campus: ${campus.name}` : 'This student is not enrolled'} </h6>
+          }
         </div>
       </div>
     );
