@@ -9,13 +9,16 @@ class EditCampus extends Component{
     this.update = this.update.bind(this);
   };
 
+  componentWillReceiveProps(nextProps){
+    this.setState(nextProps.campus)
+  };
+
   update(ev){
     ev.preventDefault();
     this.props.updateCampus(this.state);
   };
 
   render(){
-    console.log(this.props)
     const { campus } = this.props;
     const { name, imageURL, description } = this.state
     return (
@@ -35,7 +38,7 @@ class EditCampus extends Component{
             onChange={ev => this.setState({ imageURL: ev.target.value })} />
           <br />
           <label>Description: </label>
-          <input 
+          <textarea
             className='form-control' 
             value={description}
             onChange={ev => this.setState({ description: ev.target.value })}  />

@@ -3,12 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import StudentItem from './StudentItem';
 
-class Students extends React.Component{
-  constructor(props){
-    super(props);
-  }
-  render(){
-    const { students, campuses } = this.props;
+const Students = (props) => {
+    const { students } = props;
     return (
       <div>
         <div style={{ display: 'flex' }}>
@@ -20,23 +16,18 @@ class Students extends React.Component{
           { 
             students.map(student => {
               return ( 
-                <StudentItem 
-                  key={student.id} 
-                  campus={campuses.find(campus => campus.id === student.campusId)}
-                  student={student}/>
+                <StudentItem key={student.id} student={student}/>
               )
             })
           }
         </div>
       </div>
     )
-  }
 }
 
-const mapStateToProps = ({ students,campuses }) => {
+const mapStateToProps = ({ students }) => {
   return {
-    students,
-    campuses
+    students
   }
 } 
 

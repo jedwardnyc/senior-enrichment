@@ -17,7 +17,7 @@ class EditStudent extends React.Component {
 
   render(){
     const { student } = this.props
-    const { fullName, imageURL, gpa, email } = this.state
+    const { fullName, imageURL, gpa, email, firstName, lastName } = this.state
     if (!this.props.student) return null
     return (
       <div>
@@ -25,9 +25,12 @@ class EditStudent extends React.Component {
         <form onSubmit={this.update} className='form-control from-group'>
           <label>Full Name: </label>
           <input 
-            onChange={ev => this.setState({ fullName: ev.target.value })}
+            onChange={ev => {
+              const names = ev.target.value.split(' ')
+              this.setState({ firstName: names[0], lastName: names[1] })
+            }}
             className='form-control form-inline' 
-            value={fullName} />
+            value={`${firstName} ${lastName}`} />
           <br />
           <label>Avatar URL: </label>
           <input 
@@ -37,7 +40,10 @@ class EditStudent extends React.Component {
           <br />
           <label>Email: </label>
           <input 
-            onChange={ev => this.setState({ email: ev.target.value })}
+            onChange={ev => ev.target.value ? 
+              this.setState({ email: ev.target.value }) 
+            : this.setState({ email: `${firstName}.${lastName}@school.com`})
+          }
             className='form-control' 
             value={email} />
           <br />

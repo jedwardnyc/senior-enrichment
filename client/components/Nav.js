@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Nav = (props) => {
+  window.scrollTo(0,0)
   return (
- 
     <nav style={{marginBottom:'25px'}} className="navbar navbar-light bg-light justify-content-between">
       <a className="navbar-brand" href="/">Home</a>
       <ul className='nav'>

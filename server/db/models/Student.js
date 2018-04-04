@@ -31,22 +31,16 @@ const Student = conn.define('student', {
   },
   imageURL: {
     type: Sequelize.STRING,
-    defaultValue: avatar.generate_avatar()
+    defaultValue: './public/images/default_student.jpg'
   }
 },  
 {
   getterMethods: {
     fullName(){
       return `${this.firstName} ${this.lastName}`;
-    },
-  },
-  setterMethods: {
-    fullName: function (value){
-      const names = value.split(' ');
-      this.setDataValue('firstName', names[0]);
-      this.setDataValue('lastName', names[1]);
-    },
+    }
   }
+  //may need a setter to get fullName to update
 });
 
 module.exports = Student;
