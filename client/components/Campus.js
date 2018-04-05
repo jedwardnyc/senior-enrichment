@@ -12,15 +12,15 @@ const Campus = (props) => {
     <div>
       <div className='jumbotron' style={{display: 'flex'}}>
         <img style={{width:'50%'}} src={campus.imageURL} />
-        <div style={{width:'50%', flexDirection:'column', paddingLeft:'20px', textAlign:'center'}}>
-        <div>
-          <h1> {campus.name} </h1> 
-          <p> {campus.description} </p>
-        </div>
-        <div style={{justifyContent:'flex-end'}}>
-          <Link to={`/campuses/${campus.id}/edit`}><button className='btn btn-success'>Edit</button></Link> &nbsp;
-          <button onClick={() => props.deleteCampus(campus)} className='btn btn-danger'>Delete</button>
-        </div>
+        <div style={{display: 'flex', width:'50%', flexDirection:'column', paddingLeft:'20px', textAlign:'center'}}>
+          <div>
+            <h1> {campus.name} </h1> 
+            <p> {campus.description} </p>
+          </div>
+          <div style={{display:'flex', alignItems:'flex-end', justifyContent:'flex-end'}}>
+            <Link to={`/campuses/${campus.id}/edit`}><button className='btn btn-success'>Edit</button></Link> &nbsp;
+            <button onClick={() => props.deleteCampus(campus)} className='btn btn-danger'>Delete</button>
+          </div>
         </div>
       </div>
       <div style={{display: 'flex', marginBottom:'45px'}}>
@@ -33,7 +33,7 @@ const Campus = (props) => {
         { 
           campus.students.length ? 
            campus.students.map(student => <StudentItem key={student.id} path={location.hash} student={student}/>) 
-           : <div style={{padding: '120px'}}> There are no students currently enrolled at {campus.name} </div>
+           : <div style={{paddingBottom: '120px'}}> There are no students currently enrolled at {campus.name} </div>
         }
       </div>
     </div>

@@ -9,6 +9,11 @@ class EditStudent extends React.Component {
     this.update = this.update.bind(this);
   };
 
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps)
+    this.setState(nextProps.student)
+  }
+
   update(ev){
     ev.preventDefault();
     this.props.updateStudent(this.state);
@@ -27,10 +32,10 @@ class EditStudent extends React.Component {
           <input 
             onChange={ev => {
               const names = ev.target.value.split(' ')
-              this.setState({ firstName: names[0], lastName: names[1] })
+              this.setState({ fullName: ev.target.value, firstName: names[0], lastName: names[1] })
             }}
             className='form-control form-inline' 
-            value={`${firstName} ${lastName}`} />
+            value={fullName} />
           <br />
           <label>Avatar URL: </label>
           <input 

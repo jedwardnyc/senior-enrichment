@@ -10,12 +10,12 @@ class Campuses extends React.Component{
   render(){
     return (
       <div>
-        <div style={{display: 'flex'}}>
+        <div style={{display: 'flex', justifyContent:'center'}}>
           <h1 style={{flex: 6 }}> All Campuses </h1>
           <Link to='/campuses/create'><button style={{flex: 1 }} className='btn btn-primary'> Add Campus </button></Link>
         </div>
         <br />
-        <div style={{listStyleType: 'none', display:'flex', flexWrap:'wrap', justifyContent:'space-evenly'}}>
+        <div style={{display:'flex', flexWrap:'wrap', justifyContent:'space-between', paddingRight: '15px'}}>
           { 
             this.props.campuses.map(campus => {
               return ( 
