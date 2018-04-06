@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createCampus } from '../store/campuses';
+import { createCampus } from '../store';
 
 class CreateCampus extends Component {
 
   constructor(){
     super();
-    this.state = {}
+    this.state = {};
     this.onSubmit = this.onSubmit.bind(this);
-  }
+  };
 
   onSubmit(ev){
     ev.preventDefault();
     this.props.createCampus(this.state);
-  }
+  };
 
   render(){
     return (
@@ -39,14 +39,13 @@ class CreateCampus extends Component {
           </form> 
       </div> 
     )
-  }
-}
-
+  };
+};
 
 const mapDispatchToProps = (dispatch, {history}) => {
   return {
     createCampus: (campus) => dispatch(createCampus(campus, history))
-  }
-}
+  };
+};
 
 export default connect(null,mapDispatchToProps)(CreateCampus);

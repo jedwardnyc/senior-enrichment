@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateCampus } from '../store/campuses';
+import { updateCampus } from '../store';
 
 class EditCampus extends Component{
   constructor(props){
     super(props);
-    this.state = this.props.campus
+    this.state = this.props.campus;
     this.update = this.update.bind(this);
   };
 
   componentWillReceiveProps(nextProps){
     console.log(nextProps)
-    this.setState(nextProps.campus)
+    this.setState(nextProps.campus);
   };
 
   update(ev){
@@ -22,6 +22,7 @@ class EditCampus extends Component{
   render(){
     const { campus } = this.props;
     const { name, imageURL, description } = this.state
+   
     return (
       <div>
         <h1> Edit {campus.name}? </h1>
@@ -63,4 +64,4 @@ const mapDispatchToProps = (dispatch, { history }) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditCampus)
+export default connect(mapStateToProps, mapDispatchToProps)(EditCampus);

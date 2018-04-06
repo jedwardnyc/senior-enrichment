@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateStudent } from '../store/students';
 
-class EditStudent extends React.Component {
+class EditStudent extends Component {
   constructor(props){
     super(props);
     this.state = this.props.student;
@@ -10,19 +10,17 @@ class EditStudent extends React.Component {
   };
 
   componentWillReceiveProps(nextProps){
-    console.log(nextProps)
-    this.setState(nextProps.student)
-  }
+    this.setState(nextProps.student);
+  };
 
   update(ev){
     ev.preventDefault();
     this.props.updateStudent(this.state);
-    console.log(this.state)
   };
 
   render(){
-    const { student } = this.props
-    const { fullName, imageURL, gpa, email, firstName, lastName } = this.state
+    const { student } = this.props;
+    const { fullName, imageURL, gpa, email, firstName, lastName } = this.state;
     if (!this.props.student) return null
     return (
       <div>
@@ -65,16 +63,16 @@ class EditStudent extends React.Component {
   };
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = ({ students }, ownProps) => {
   return {
-    student: state.students.find(student => student.id === ownProps.id*1 ),
-  }
-}
+    student: students.find(student => student.id === ownProps.id*1 ),
+  };
+};
 
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
     updateStudent: (student) => dispatch(updateStudent(student, history))
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(EditStudent)
+export default connect(mapStateToProps,mapDispatchToProps)(EditStudent);

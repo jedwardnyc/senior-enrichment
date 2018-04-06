@@ -45,23 +45,23 @@ const students = [
 const campuses = [
   {
     name: "Fresno Campus",
-    description: faker.lorem.paragraph()
+    description: faker.lorem.paragraphs(3)
   },
   {
     name: `${faker.address.state()} Campus`,
-    description: faker.lorem.paragraph(),
+    description: faker.lorem.paragraphs(3),
   },
   {
     name: `${faker.address.state()} Campus`,
-    description: faker.lorem.paragraph(),
+    description: faker.lorem.paragraphs(4),
   },
   {
     name: `${faker.address.state()} Campus`,
-    description: faker.lorem.paragraph(),
+    description: faker.lorem.paragraphs(2),
   },
   {
     name: `${faker.address.state()} Campus`,
-    description: faker.lorem.paragraph(),
+    description: faker.lorem.paragraphs(3),
   },
 ];
 

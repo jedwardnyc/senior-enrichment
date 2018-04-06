@@ -15,7 +15,7 @@ export const createStudent = (student, history) => {
     return axios.post('/api/students', student)
     .then(res => res.data)
     .then(student => dispatch({ type: CREATE_STUDENT, student }))
-    .then(() => history.push('/students'))
+    .then((student) => history.push(`/students/${student.id}`))
     .catch(err => console.log(err))
   }
 };

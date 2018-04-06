@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchStudents, fetchCampuses } from '../store';
@@ -13,7 +13,7 @@ import Campus from './Campus';
 import EditCampus from './EditCampus';
 import CreateCampus from './CreateCampus';
 
-class App extends React.Component{
+class App extends Component{
 
   componentDidMount(){
     this.props.fetchStudents();

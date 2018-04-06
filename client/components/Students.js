@@ -23,12 +23,12 @@ const Students = (props) => {
         </div>
       </div>
     )
-}
+};
 
 const mapStateToProps = ({ students }) => {
   return {
     students
-  }
-} 
+  };
+};
 
 export default connect(mapStateToProps)(Students);

@@ -6,8 +6,10 @@ import { deleteCampus } from '../store';
 import StudentItem from './StudentItem';
 
 const Campus = (props) => {
-  const { campus } = props
-  if (!campus) return null
+  const { campus, students } = props;
+  if (!campus) return null;
+  //if time, look at this, it probs shouldn't be there
+  const studentArr = students.filter(student => student.campusId === campus.id)
   return (
     <div>
       <div className='jumbotron' style={{display: 'flex'}}>
@@ -31,25 +33,27 @@ const Campus = (props) => {
       <br />
       <div style={{display: 'flex', flexWrap: 'wrap', justifyContent:'center'}}>
         { 
-          campus.students.length ? 
-           campus.students.map(student => <StudentItem key={student.id} path={location.hash} student={student}/>) 
+          studentArr.length ? 
+           studentArr.map(student => <StudentItem key={student.id} path={location.hash} student={student}/>) 
            : <div style={{paddingBottom: '120px'}}> There are no students currently enrolled at {campus.name} </div>
         }
       </div>
     </div>
   )
-}
+};
 
-const mapStateToProps = ({ campuses }, ownProps) => {
+const mapStateToProps = ({ campuses, students }, ownProps) => {
+  const campus = campuses.find(campus => campus.id === ownProps.id*1 )
   return {
-    campus: campuses.find(campus => campus.id === ownProps.id*1 )
-  }
-}
+    campus,
+    students
+  };
+};
 
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
     deleteCampus: (campus) => dispatch(deleteCampus(campus, history))
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Campus)
+export default connect(mapStateToProps, mapDispatchToProps)(Campus);

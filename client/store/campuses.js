@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_CAMPUSES, CREATE_CAMPUS, EDIT_CAMPUS, DELETE_CAMPUS, EDIT_STUDENT } from './constants';
+import { GET_CAMPUSES, CREATE_CAMPUS, EDIT_CAMPUS, DELETE_CAMPUS } from './constants';
 
 export const fetchCampuses = () => {
   return (dispatch) => {
@@ -24,10 +24,9 @@ export const deleteCampus = (campus, history) => {
   return (dispatch) => {
     return axios.delete(`/api/campuses/${campus.id}`)
       .then(() => {
-        console.log(campus)
-        dispatch({ type: DELETE_CAMPUS, campus }
-      )})
-      .then(() => history.push('/campuses'))
+        dispatch({ type: DELETE_CAMPUS, campus })
+        history.push('/campuses')
+      })
       .catch(err => console.log(err))
   }
 }
@@ -52,8 +51,6 @@ const campusReducer = (state = [], action) => {
       return state.filter(campus => campus.id !== action.campus.id*1)
     case EDIT_CAMPUS:
       return state.map(campus => campus.id === action.campus.id*1 ? action.campus : campus)
-    case EDIT_STUDENT:
-      return state
     default:
       return state;
   }

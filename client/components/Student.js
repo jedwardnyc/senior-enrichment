@@ -12,17 +12,18 @@ class Student extends Component {
   };
 
   componentWillReceiveProps(nextProps){
-    this.setState(nextProps.student)
+    this.setState(nextProps.student);
   };
 
   update(ev){
     ev.preventDefault();
-    this.props.updateStudent(this.state)
+    this.props.updateStudent(this.state);
   };
 
   render(){
-    const { student, campuses, campus, deleteStudent } = this.props;
-    if (student && campus) {
+    const { student, students, campuses, campus, deleteStudent } = this.props;
+    console.log(student)
+    if (student) {
       return (
         <div>
           <div className='jumbotron' >
@@ -50,7 +51,7 @@ class Student extends Component {
           student && campus ? 
           <div>
             <h4 style={{textAlign: 'center'}}> This student is registered to: </h4>
-            <CampusItem campus={campus}/>
+            <CampusItem campus={campus} studentArr={students}/>
           </div>  :
           <div>
             <h3 style={{textAlign: 'center'}}> This student is not registered to a campus! </h3>
@@ -81,6 +82,7 @@ const mapStateToProps = ({students, campuses}, ownProps) => {
   const student = students.find(student => student.id === ownProps.id*1)
   const campus = student ? campuses.find(campus => campus.id === student.campusId) : null
   return {
+    students,
     student,
     campuses,
     campus
@@ -91,7 +93,7 @@ const mapDispatchToProps = (dispatch, { history }) => {
   return {
     deleteStudent: (student) => dispatch(deleteStudent(student,history)),
     updateStudent: (student) => dispatch(updateStudent(student,history))
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Student)
+export default connect(mapStateToProps, mapDispatchToProps)(Student);

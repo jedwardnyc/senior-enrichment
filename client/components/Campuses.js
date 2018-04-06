@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CampusItem from './CampusItem';
 
-class Campuses extends React.Component{
+class Campuses extends Component{
   constructor(props){
     super(props);
-  }
+  };
+
   render(){
+    const { campuses, students } = this.props;
     return (
       <div>
         <div style={{display: 'flex', justifyContent:'center'}}>
@@ -17,22 +19,23 @@ class Campuses extends React.Component{
         <br />
         <div style={{display:'flex', flexWrap:'wrap', justifyContent:'space-between', paddingRight: '15px'}}>
           { 
-            this.props.campuses.map(campus => {
+            campuses.map(campus => {
               return ( 
-               <CampusItem key={campus.id} campus={campus} />
+               <CampusItem key={campus.id} studentArr={students} campus={campus} />
               )
             })
           }
         </div>
       </div>
     )
-  }
-}
+  };
+};
 
-const mapStateToProps = ({ campuses }) => {
+const mapStateToProps = ({ campuses, students }) => {
   return {
+    students,
     campuses
-  }
-} 
+  };
+};
 
 export default connect(mapStateToProps)(Campuses);

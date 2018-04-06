@@ -16,6 +16,6 @@ const Nav = (props) => {
       </ul>
     </nav>
   )
-}
+};
 
 export default Nav;

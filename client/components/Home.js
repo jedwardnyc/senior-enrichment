@@ -11,6 +11,6 @@ const Home = (props) => {
       <Link to='/campuses'> Click here for all campuses </Link>
     </div>
   )
-}
+};
 
 export default Home;

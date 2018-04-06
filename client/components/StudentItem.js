@@ -18,14 +18,14 @@ const StudentItem = (props) => {
           }
         </div>
       </div>
-    );
-}
+    )
+;}
 
 const mapStateToProps = ({ campuses }, { student }) => {
   return {
     student,
     campus: campuses.find(campus => campus.id === student.campusId)
-  }
-} 
+  };
+};
 
 export default connect(mapStateToProps)(StudentItem);

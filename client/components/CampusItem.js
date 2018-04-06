@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-class CampusItem extends React.Component {
+class CampusItem extends Component {
 
   constructor (props) {
     super(props);
-  }
+  };
 
   render () {
-    const { campus } = this.props;
+    const { campus, studentArr } = this.props;
+    const students = studentArr.filter(student => student.campusId === campus.id );
     return (
       <div style={{display: 'flex', width:'45%', paddingBottom:'50px'}}>
           <div style={{width: '50%'}}>
@@ -19,15 +20,15 @@ class CampusItem extends React.Component {
           <Link to={`/campuses/${campus.id}`}>
             <h3 style={{textAlign: 'center'}}> {campus.name} </h3>
           </Link>
-            { campus.students ? 
-              <h6 style={{textAlign: 'center'}}>{campus.students.length} Enrolled Students</h6>
+            { students ? 
+              <h6 style={{textAlign: 'center'}}>{students.length} Enrolled Students</h6>
               : null 
             }
           </div>
       </div>
-    );
-  }
-}
+    )
+  };
+};
 
 
 export default connect()(CampusItem);
