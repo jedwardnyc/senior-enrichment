@@ -30,11 +30,13 @@ const randomCampus = () => {
 
 const randomStudent = () => {
   const gender = chance.gender();
+  const first_name = chance.first({ gender });
+  const last_name = chance.last();
   return Student.build({
-    firstName: chance.first({ gender }),
-    lastName: chance.last(),
-    email: chance.email({ domain: 'mhiacademy.edu'}),
-    gpa: Number(((Math.random()*10)%2).toFixed(1))+2,
+    firstName: first_name,
+    lastName: last_name,
+    email: `${first_name.toLowerCase()}.${last_name.toLowerCase()}@MHIacademy.edu`,
+    gpa: Number(((Math.random()*10)%2).toFixed(1))+1,
     imageURL: avatar.generate_avatar({ gender }),
   });
 };
