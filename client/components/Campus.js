@@ -12,9 +12,9 @@ const Campus = (props) => {
   const studentArr = students.filter(student => student.campusId === campus.id)
   return (
     <div>
-      <div className='jumbotron' style={{display: 'flex'}}>
-        <img style={{width:'50%'}} src={campus.imageURL} />
-        <div style={{display: 'flex', width:'50%', flexDirection:'column', paddingLeft:'20px', textAlign:'center'}}>
+      <div className='jumbotron flex'>
+        <img className='imageFlex' src={campus.imageURL} />
+        <div id='campusInfo'>
           <div>
             <h1> {campus.name} </h1> 
             <p> {campus.description} </p>
@@ -22,23 +22,23 @@ const Campus = (props) => {
             <h6> {campus.addressLine1} </h6>
             <h6> {campus.addressLine2} </h6>
           </div>
-          <div style={{display:'flex', alignItems:'flex-end', justifyContent:'flex-end'}}>
+          <div className='campusButtons'>
             <Link to={`/campuses/${campus.id}/edit`}><button className='btn btn-success'>Edit</button></Link> &nbsp;
             <button onClick={() => props.deleteCampus(campus)} className='btn btn-danger'>Delete</button>
           </div>
         </div>
       </div>
-      <div style={{display: 'flex', marginBottom:'45px'}}>
-        <h1 style={{flex: 6}}>Students on Campus</h1>
-        <Link to={`/students/create`}><button style={{flex: 1 }} className='btn btn-primary'> Add Student </button></Link>
+      <div id='campusStudents'>
+        <h1 className='listTitle'>Students on Campus</h1>
+        <Link to={`/students/create`}><button className='btn btn-primary addButton'> Add Student </button></Link>
       </div>
       <br />
       <br />
-      <div style={{display: 'flex', flexWrap: 'wrap', justifyContent:'center'}}>
+      <div id='studentsList'>
         { 
           studentArr.length ? 
            studentArr.map(student => <StudentItem key={student.id} path={location.hash} student={student}/>) 
-           : <div style={{paddingBottom: '120px'}}> There are no students currently enrolled at {campus.name} </div>
+           : <div className='studentsPadding'> There are no students currently enrolled at {campus.name} </div>
         }
       </div>
     </div>

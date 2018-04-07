@@ -105,14 +105,14 @@ class EditCampus extends Component{
         </form>
       </div>
       <hr />
-      <h2 style={{textAlign:'center'}}> Students on Campus: </h2>
-      <div style={{display: 'flex', flexWrap: 'wrap', justifyContent:'center', paddingBottom:'25px'}}>
+      <h2 className='flex'> Students on Campus: </h2>
+      <div className='studentsList studentsPadding'>
       { 
         studentArr.length ? 
          studentArr.map(student => <StudentItem key={student.id} path={location.hash} student={student}/>) 
-         : <div style={{paddingBottom: '120px'}}> There are no students currently enrolled at {campus.name} </div>
+         : <div className='studentsPadding'> There are no students currently enrolled at {campus.name} </div>
       }
-    </div>
+      </div>
     </div>
     )
   };

@@ -61,7 +61,7 @@ class CreateStudent extends Component {
             </div>
           </div>
           <br />
-          <select onChange={ev => this.setState({ campusId: ev.target.value*1 })} style={{align: 'center'}}>
+          <select onChange={ev => this.setState({ campusId: ev.target.value*1 })}>
             <option value={null}> --- Select a Campus --- </option> 
             {
               campuses.map(campus => {

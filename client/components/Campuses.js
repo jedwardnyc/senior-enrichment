@@ -12,12 +12,12 @@ class Campuses extends Component{
     const { campuses, students } = this.props;
     return (
       <div>
-        <div style={{display: 'flex', justifyContent:'center'}}>
-          <h1 style={{flex: 6 }}> All Campuses </h1>
-          <Link to='/campuses/create'><button style={{flex: 1 }} className='btn btn-primary'> Add Campus </button></Link>
+        <div className='campuses'>
+          <h1 className='listTitle'> All Campuses </h1>
+          <Link to='/campuses/create'><button className='btn btn-primary addButton'> Add Campus </button></Link>
         </div>
         <br />
-        <div style={{display:'flex', flexWrap:'wrap', justifyContent:'space-between', paddingRight: '15px'}}>
+        <div id='campusesList'>
           { 
             campuses.map(campus => {
               return ( 

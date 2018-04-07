@@ -26,17 +26,17 @@ class Student extends Component {
       return (
         <div>
           <div className='jumbotron' >
-            <div style={{display: 'flex'}}>
-              <div style={{width:'50%'}}>
+            <div className='flex'>
+              <div className='imageFlex'>
                 <img src={student.imageURL} />
               </div>
               <div>
-                <div style={{width:'50%'}}>
+                <div id='studentInfo'>
                   <h3> {student.fullName} </h3>
                   <h3> {student.email} </h3>
                   <h3> <span className={`badge ${student.gpa > 2.5 ? 'badge-secondary' : 'badge-warning'}`}> GPA: {student.gpa} </span> </h3>
                 </div>
-                <div style={{justifyContent:'flex-end'}}>
+                <div className='studentButtons'>
                   <Link to={`/students/${student.id}/edit`}><button className='btn btn-success'>Edit</button></Link> &nbsp;
                   <button onClick={() => deleteStudent(student)} className='btn btn-danger'>Delete</button>
                 </div>
@@ -49,16 +49,16 @@ class Student extends Component {
         {
           student && campus ? 
           <div>
-            <h4 style={{textAlign: 'center'}}> This student is registered to: </h4>
+            <h4 className='center'> This student is registered to: </h4>
             <CampusItem campus={campus} studentArr={students}/>
           </div>  :
           <div>
-            <h3 style={{textAlign: 'center'}}> This student is not registered to a campus! </h3>
-            <h4 style={{textAlign: 'center'}}> Please add them to a Campus: </h4> 
+            <h3 className='center'> This student is not registered to a campus! </h3>
+            <h4 className='center'> Please add them to a Campus: </h4> 
           </div>
         }
-          <form style={{textAlign: 'center'}} onSubmit={this.update}>
-            <select value={student.campusId} onChange={ev => this.setState({ campusId: ev.target.value*1 })} style={{align: 'center'}}>
+          <form className='center' onSubmit={this.update}>
+            <select value={student.campusId} onChange={ev => this.setState({ campusId: ev.target.value*1 })}>
               <option value='null'> --- Unenrolled --- </option> 
               {
                 campuses.map(campus => {
@@ -66,7 +66,7 @@ class Student extends Component {
                 })
               }
             </select>
-            <button style={{marginLeft: '10px'}} className='btn btn-dark btn-sm'> {campus ? 'Change Campus' : 'Add to Campus'} </button>
+            <button className='btn btn-dark btn-sm buttonSpacing'> {campus ? 'Change Campus' : 'Add to Campus'} </button>
           </form>
         </div>
       </div>

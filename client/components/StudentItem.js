@@ -10,8 +10,8 @@ const StudentItem = (props) => {
       <div style={{width: '30%', display: 'flex', flexDirection:'column', alignItems:'center', paddingBottom:'15px'}}>
         <img width="50%" src={student.imageURL} />
         <br />
-        <div style={{textAlign: 'center'}}>
-          <Link style={{textAlign: 'center'}} to={`/students/${student.id}`}>
+        <div className='center'>
+          <Link className='center' to={`/students/${student.id}`}>
             <h4> {student.fullName} </h4>
           </Link>
           {

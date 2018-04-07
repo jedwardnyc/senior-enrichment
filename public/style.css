@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+}
+
+.center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.imageFlex {
+  width: 50%;
+}
+
+.buttonSpacing {
+  margin-left: 10px;
+}
+
+#campusItem {
+  display: flex;
+  width: 45%; 
+  padding-bottom: 50px;
+}
+
+#campusInfo {
+  display: flex;
+  flex-direction: column;
+  width: 50%; 
+  justify-content: center;
+  text-align: center;
+  padding-left: 20px;
+}
+
+#campusStudents {
+  display: flex;
+  margin-bottom: 45px;
+}
+
+#campuses {
+  display: flex; 
+  justify-content: center;
+}
+
+#campusesList {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  padding-right: 15px;
+}
+
+.campusButtons {
+  display: flex; 
+  align-items: flex-end; 
+  justify-content: flex-end;
+}
+
+#studentItem {
+  width: 30%; 
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+#studentInfo {
+  width: 50%;
+}
+
+#studentsList {
+  display: flex; 
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.listTitle {
+  flex: 6;
+}
+
+.addButton {
+  flex: 1;
+}
+
+.studentButtons {
+  justify-content: flex-end;
+}
+
+.studentsPadding {
+  padding-bottom: 120px;
+}
+
+.navMargin {
+  margin-bottom: 25px;
+}
+

@@ -68,5 +68,3 @@ db.sync({force: true})
     db.close();
     return null;
 });
-
-
