@@ -15,6 +15,12 @@ const Campus = conn.define('campus', {
   },
   description: {
     type: Sequelize.TEXT
+  },
+  addressLine1: {
+    type: Sequelize.STRING
+  },
+  addressLine2: {
+    type: Sequelize.STRING
   }
 });
 

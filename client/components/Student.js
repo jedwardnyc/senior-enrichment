@@ -21,8 +21,7 @@ class Student extends Component {
   };
 
   render(){
-    const { student, students, campuses, campus, deleteStudent } = this.props;
-    console.log(student)
+    const { student, students, campuses, campus, deleteStudent, id } = this.props;
     if (student) {
       return (
         <div>
@@ -33,7 +32,7 @@ class Student extends Component {
               </div>
               <div>
                 <div style={{width:'50%'}}>
-                  <h2> {student.fullName} </h2>
+                  <h3> {student.fullName} </h3>
                   <h3> {student.email} </h3>
                   <h3> GPA: {student.gpa} </h3>
                 </div>
@@ -60,10 +59,10 @@ class Student extends Component {
         }
           <form style={{textAlign: 'center'}} onSubmit={this.update}>
             <select onChange={ev => this.setState({ campusId: ev.target.value*1 })} style={{align: 'center'}}>
-              <option value='-1'> --- Select a Campus --- </option> 
+              <option value='null'> --- Unenrolled --- </option> 
               {
                 campuses.map(campus => {
-                  return <option key={campus.id} value={campus.id}> {campus.name} </option>
+                  return <option selected={ campus.id === student.campusId } key={campus.id} value={campus.id}> {campus.name} </option>
                 })
               }
             </select>
@@ -78,8 +77,8 @@ class Student extends Component {
 };
 
 
-const mapStateToProps = ({students, campuses}, ownProps) => {
-  const student = students.find(student => student.id === ownProps.id*1)
+const mapStateToProps = ({students, campuses}, {id}) => {
+  const student = students.find(student => student.id === id*1)
   const campus = student ? campuses.find(campus => campus.id === student.campusId) : null
   return {
     students,

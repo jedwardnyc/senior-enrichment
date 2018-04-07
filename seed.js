@@ -1,94 +1,74 @@
-const db = require('./server/db');
-const Student = require('./server/db/models/Student');
-const Campus = require('./server/db/models/Campus');
+const { Campus, Student, db }  = require('./server/db/models/');
+
+// randomizers for seeding
 const faker = require('faker');
 const avatar = require('cartoon-avatar');
+const chance = require('chance')(12345);
 
-const students = [
-  { 
-    firstName: "Jacob",
-    lastName: "Rico",
-    email: "jacob.rico@school.edu",
-    gpa: 3.5,
-    imageURL: avatar.generate_avatar({"gender":"male"})
-  },
-  { 
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    email: faker.internet.email(),
-    gpa: Number(((Math.random()*10)%2).toFixed(1))+2,
-    imageURL: avatar.generate_avatar()
-  },
-  { 
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    email: faker.internet.email(),
-    gpa: Number(((Math.random()*10)%2).toFixed(1))+2,
-    imageURL: avatar.generate_avatar()
-  },
-  { 
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    email: faker.internet.email(),
-    gpa: Number(((Math.random()*10)%2).toFixed(1))+2,
-    imageURL: avatar.generate_avatar()
-  },
-  { 
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    email: faker.internet.email(),
-    gpa: Number(((Math.random()*10)%2).toFixed(1))+2,
-    imageURL: avatar.generate_avatar()
-  },
-];
+const numOfStudents = 100;
+const numOfCampuses = 20;
 
-const campuses = [
-  {
-    name: "Fresno Campus",
-    description: faker.lorem.paragraphs(3)
-  },
-  {
-    name: `${faker.address.state()} Campus`,
+const doTimes = (n, func) => {
+  const result = [];
+  while (n){
+    result.push(func());
+    n--;
+  };
+  return result;
+}
+
+const randomCampus = (generatedStudents) => {
+  const streetAddress = chance.address({short_suffix: true});
+  const city = faker.address.city();
+  const cityStateZip = `${city}, ${chance.state({country: 'us'})} ${chance.zip()}`;
+  return Campus.build({
+    name: `${city} Campus`,
     description: faker.lorem.paragraphs(3),
-  },
-  {
-    name: `${faker.address.state()} Campus`,
-    description: faker.lorem.paragraphs(4),
-  },
-  {
-    name: `${faker.address.state()} Campus`,
-    description: faker.lorem.paragraphs(2),
-  },
-  {
-    name: `${faker.address.state()} Campus`,
-    description: faker.lorem.paragraphs(3),
-  },
-];
+    addressLine1: streetAddress,
+    addressLine2: cityStateZip
+  });   
+};
+
+const randomStudent = (campuses) => {
+  const campus = chance.pickone(campuses)
+  console.log(campus)
+  const gender = chance.gender();
+  return Student.build({
+    firstName: chance.first({ gender }),
+    lastName: chance.last({ gender }),
+    email: chance.email({ domain: 'mhiacademy.com'}),
+    gpa: Number(((Math.random()*10)%2).toFixed(1))+2,
+    imageURL: avatar.generate_avatar({ gender }),
+    campusId: campus.id
+  })
+};
+
+const campuses = doTimes(numOfCampuses, randomCampus)
+const students = doTimes(numOfStudents, () => randomStudent(campuses))
 
 const seed = () => {
-  Promise.all(campuses.map(campus => 
-    Campus.create(campus))
-  )
-  .then(() => Promise.all(students.map(student => 
-      Student.create(student)
+  return Promise.all(campuses.map(campus => campus.save()))
+    .then(() => Promise.all(students.map(student => student.save()
       .then(student => {
         const randomCampus = Math.floor(Math.random()*campuses.length)+1
         student.setCampus(randomCampus)
       })
     ))
-  .then(() => db.close())
-  );
-};
+  )
+}
 
-const run = () => {
-  console.log('Syncing...');
-  db.sync({force: true})
+console.log('Syncing...');
+
+db.sync({force: true})
   .then(() => {
     console.log('Seeding...');
-    return seed()
+    return seed();
   })
   .then(()=> console.log('Database has seeded!'))
   .catch(err => console.log('!! Error while seeding !!', err))
-};
+  .finally(() => {
+    db.close();
+    return null;
+});
 
-run();
+

@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { GET_STUDENTS, CREATE_STUDENT, EDIT_STUDENT, DELETE_STUDENT } from './constants';
+import { errorHandler } from './errors';
 
 export const fetchStudents = () => {
   return (dispatch) => {
     return axios.get('/api/students')
     .then(res => res.data)
     .then(students => dispatch({ type: GET_STUDENTS, students}))
-    .catch(err => console.log(err))
+    .catch(err => errorHandler(err))
   }
 };
 
@@ -14,18 +15,22 @@ export const createStudent = (student, history) => {
   return (dispatch) => {
     return axios.post('/api/students', student)
     .then(res => res.data)
-    .then(student => dispatch({ type: CREATE_STUDENT, student }))
-    .then((student) => history.push(`/students/${student.id}`))
-    .catch(err => console.log(err))
+    .then(student => {
+      dispatch({ type: CREATE_STUDENT, student })
+      history.push(`/students/${student.id}`)
+    })
+    .catch(err => dispatch(errorHandler(err.response.data.errors)))
   }
 };
 
 export const deleteStudent = (student, history) => {
   return (dispatch) => {
     return axios.delete(`/api/students/${student.id}`)
-    .then(() => dispatch({ type: DELETE_STUDENT, student }))
-    .then(() => history.push('/students'))
-    .catch(err => console.log(err))
+    .then(() => {
+      dispatch({ type: DELETE_STUDENT, student })
+      history.push('/students')
+    })
+    .catch(err => errorHandler(err))
   }
 };
 
@@ -33,9 +38,11 @@ export const updateStudent = (student, history) => {
   return (dispatch) => {
     return axios.put(`/api/students/${student.id}`, student)
     .then(res => res.data)
-    .then(student => dispatch({ type: EDIT_STUDENT, student }))
-    .then(() => history.push('/students'))
-    .catch(err => console.log(err))
+    .then(student => {
+      history.push(`/students/${student.id}`)
+      dispatch({ type: EDIT_STUDENT, student })
+    })
+    .catch(err => errorHandler(err))
   }
 };
 

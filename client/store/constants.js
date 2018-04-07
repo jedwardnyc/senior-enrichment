@@ -10,3 +10,7 @@ export const GET_CAMPUSES = 'GET_CAMPUSES';
 export const CREATE_CAMPUS = 'CREATE_CAMPUSES';
 export const DELETE_CAMPUS = 'DELETE_CAMPUSES';
 export const EDIT_CAMPUS = 'EDIT_CAMPUSES';
+
+/* Error consts */
+export const ERROR = 'ERROR';
+export const CLEAR_ERROR = 'CLEAR_ERROR';

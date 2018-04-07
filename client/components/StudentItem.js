@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+
 const StudentItem = (props) => {
     const { student, campus } = props;
     const path = location.hash;
@@ -14,7 +15,7 @@ const StudentItem = (props) => {
             <h4> {student.fullName} </h4>
           </Link>
           {
-            path.includes('campuses') ? null : <h6> {campus ? campus.name : 'This student is not enrolled'} </h6>
+            path.includes('campuses') ? null : <h6> {campus ? campus.name : 'This student is not enrolled'} </h6> 
           }
         </div>
       </div>

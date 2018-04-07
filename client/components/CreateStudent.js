@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createStudent } from '../store/students';
+import { createStudent, clearErrors } from '../store';
 
 class CreateStudent extends Component {
   constructor(){
     super();
     this.state = {
-      fullName: ''
+      fullName: '',
     };
     this.onSubmit = this.onSubmit.bind(this);
   };
@@ -14,19 +14,30 @@ class CreateStudent extends Component {
   onSubmit(ev){
     ev.preventDefault();
     this.props.createStudent(this.state);
+    console.log(this.props.errors)
   };
   
+  componentWillUnmount(){
+    this.props.clearErrors();
+  }
+
   render(){
     const names = this.state.fullName.split(' ');
-    const { campuses } = this.props;
+    const { campuses, errors } = this.props;
+    console.log(errors)
     return (
       <div>
         <h1> Create New Student </h1>
         <form onSubmit={this.onSubmit} className='form-control from-group'>
           <label>Full Name: </label>
-          <input 
-            onChange={ev => this.setState({ fullName: ev.target.value, firstName: names[0], lastName: names[1] })}
-            className='form-control form-inline' />
+          <div>
+            <input 
+              onChange={ev => this.setState({ fullName: ev.target.value, firstName: names[0], lastName: names[1] })}
+              className={`form-control ${errors.find(error => error.path === 'lastName') ? 'is-invalid' : ''}`} />
+            <div className="invalid-feedback">
+              Please enter your full name (first and last).
+            </div>
+          </div>
           <br />
           <label>Avatar URL: </label>
           <input 
@@ -36,15 +47,21 @@ class CreateStudent extends Component {
           <label>Email: </label>
           <input 
             onChange={ev => this.setState({ email: ev.target.value })}
-            className='form-control' />
+            className={`form-control ${errors.find(error => error.path === 'email') ? 'is-invalid' : ''}`} />
+            <div className="invalid-feedback">
+              Please enter a valid email.
+            </div>
           <br />
           <label>GPA: </label>
           <input 
             onChange={ev => this.setState({ gpa: ev.target.value })}
-            className='form-control' />
+            className={`form-control ${errors.find(error => error.path === 'gpa') ? 'is-invalid' : ''}`} />
+            <div className="invalid-feedback">
+              Please enter a number between 0-4.
+            </div>
           <br />
           <select onChange={ev => this.setState({ campusId: ev.target.value*1 })} style={{align: 'center'}}>
-            <option value='-1'> --- Select a Campus --- </option> 
+            <option value={null}> --- Select a Campus --- </option> 
             {
               campuses.map(campus => {
                 return <option key={campus.id} value={campus.id}> {campus.name} </option>
@@ -60,15 +77,17 @@ class CreateStudent extends Component {
   };
 };
 
-const mapStateToProps = ({ campuses }) => {
+const mapStateToProps = ({ campuses, errors }) => {
   return {
-    campuses
+    campuses,
+    errors
   };
 };
 
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
-    createStudent: (student) => dispatch(createStudent(student,history)) 
+    createStudent: (student) => dispatch(createStudent(student,history)),
+    clearErrors: () => dispatch(clearErrors())
   };
 };
 

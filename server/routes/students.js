@@ -4,7 +4,6 @@ const { Student, Campus } = require('../db/models');
 // reminder that all of these routes start with api/students
 router.get('/', (req,res,next) => {
   Student.findAll({
-    include: [ Campus ],
     order: [[ 'lastName', 'ASC' ]]
   })
     .then(students => res.send(students))

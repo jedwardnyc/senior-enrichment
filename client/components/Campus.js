@@ -18,6 +18,9 @@ const Campus = (props) => {
           <div>
             <h1> {campus.name} </h1> 
             <p> {campus.description} </p>
+            <h5> Located At: </h5>
+            <h6> {campus.addressLine1} </h6>
+            <h6> {campus.addressLine2} </h6>
           </div>
           <div style={{display:'flex', alignItems:'flex-end', justifyContent:'flex-end'}}>
             <Link to={`/campuses/${campus.id}/edit`}><button className='btn btn-success'>Edit</button></Link> &nbsp;
@@ -27,7 +30,7 @@ const Campus = (props) => {
       </div>
       <div style={{display: 'flex', marginBottom:'45px'}}>
         <h1 style={{flex: 6}}>Students on Campus</h1>
-        <button style={{flex: 1 }} className='btn btn-primary'> Add Student </button>
+        <Link to={`/students/create`}><button style={{flex: 1 }} className='btn btn-primary'> Add Student </button></Link>
       </div>
       <br />
       <br />
