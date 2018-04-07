@@ -12,15 +12,22 @@ const Students = (props) => {
           <Link to='/students/create' ><button className='btn btn-primary addButton'> Add Student </button></Link>
         </div>
         <br />
-        <div id='studentsList'>
-          { 
-            students.map(student => {
-              return ( 
-                <StudentItem key={student.id} student={student}/>
-              )
-            })
-          }
-        </div>
+        {
+          students.length ?
+          <div id='studentsList'>
+            { 
+              students.map(student => {
+                return ( 
+                  <StudentItem key={student.id} student={student}/>
+                )
+              })
+            }
+          </div>
+        :
+          <div className='center'>
+            <h2> There are no Students in the database </h2>
+          </div>
+        }
       </div>
     )
 };

@@ -12,20 +12,27 @@ class Campuses extends Component{
     const { campuses, students } = this.props;
     return (
       <div>
-        <div className='campuses'>
+        <div className='flex campuses'>
           <h1 className='listTitle'> All Campuses </h1>
           <Link to='/campuses/create'><button className='btn btn-primary addButton'> Add Campus </button></Link>
         </div>
         <br />
-        <div id='campusesList'>
-          { 
-            campuses.map(campus => {
-              return ( 
-               <CampusItem key={campus.id} studentArr={students} campus={campus} />
-              )
-            })
-          }
-        </div>
+        {
+          campuses.length ? 
+            <div id='campusesList'>
+              { 
+                campuses.map(campus => {
+                  return ( 
+                  <CampusItem key={campus.id} studentArr={students} campus={campus} />
+                  )
+                })
+              }
+            </div>
+          :
+          <div className='center'>
+            <h2> There are no Campuses in the database </h2>
+          </div>
+        }
       </div>
     )
   };

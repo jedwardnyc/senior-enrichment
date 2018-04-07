@@ -6,7 +6,7 @@ const avatar = require('cartoon-avatar');
 const chance = require('chance')(12345);
 
 const numOfStudents = 100;
-const numOfCampuses = 20;
+const numOfCampuses = 10;
 
 const doTimes = (n, func) => {
   const result = [];
