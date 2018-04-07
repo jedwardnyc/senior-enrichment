@@ -23,7 +23,7 @@ const Campus = (props) => {
             <h6> {campus.addressLine2} </h6>
           </div>
           <div className='campusButtons'>
-            <Link to={`/campuses/${campus.id}/edit`}><button className='btn btn-success'>Edit</button></Link> &nbsp;
+            <Link to={`/campuses/${campus.id}/edit`}><button className='btn btn-dark'>Edit</button></Link>&nbsp;
             <button onClick={() => props.deleteCampus(campus)} className='btn btn-danger'>Delete</button>
           </div>
         </div>

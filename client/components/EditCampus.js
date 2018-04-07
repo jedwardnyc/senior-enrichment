@@ -84,7 +84,7 @@ class EditCampus extends Component{
           <textarea
             value={description}
             onChange={ev => this.setState({ description: ev.target.value })}
-            className={`form-control ${errors.find(error => error.path === 'description') ? 'is-invalid' : ''}`} />
+            className={`form-control textArea ${errors.find(error => error.path === 'description') ? 'is-invalid' : ''}`} />
           <div className="invalid-feedback">
             Please enter a valid description.
           </div>
@@ -106,7 +106,7 @@ class EditCampus extends Component{
       </div>
       <hr />
       <h2 className='flex'> Students on Campus: </h2>
-      <div className='studentsList studentsPadding'>
+      <div id='studentsList' className='studentsPadding'>
       { 
         studentArr.length ? 
          studentArr.map(student => <StudentItem key={student.id} path={location.hash} student={student}/>) 

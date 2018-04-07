@@ -34,10 +34,10 @@ class Student extends Component {
                 <div id='studentInfo'>
                   <h3> {student.fullName} </h3>
                   <h3> {student.email} </h3>
-                  <h3> <span className={`badge ${student.gpa > 2.5 ? 'badge-secondary' : 'badge-warning'}`}> GPA: {student.gpa} </span> </h3>
+                  <h3> <span className={`badge ${student.gpa > 2.8 ? 'badge-secondary' : student.gpa > 2.0 ? 'badge-warning' : 'badge-danger'}`}> GPA: {student.gpa} </span> </h3>
                 </div>
                 <div className='studentButtons'>
-                  <Link to={`/students/${student.id}/edit`}><button className='btn btn-success'>Edit</button></Link> &nbsp;
+                  <Link to={`/students/${student.id}/edit`}><button className='btn btn-dark'>Edit</button></Link>&nbsp;
                   <button onClick={() => deleteStudent(student)} className='btn btn-danger'>Delete</button>
                 </div>
               </div>

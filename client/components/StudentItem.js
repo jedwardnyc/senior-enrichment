@@ -7,7 +7,7 @@ const StudentItem = (props) => {
     const { student, campus } = props;
     const path = location.hash;
     return (
-      <div style={{width: '30%', display: 'flex', flexDirection:'column', alignItems:'center', paddingBottom:'15px'}}>
+      <div id='studentItem'>
         <img width="50%" src={student.imageURL} />
         <br />
         <div className='center'>

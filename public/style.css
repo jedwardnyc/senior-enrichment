@@ -14,6 +14,10 @@
   width: 50%;
 }
 
+.textArea {
+  height: 250px;
+}
+
 .buttonSpacing {
   margin-left: 10px;
 }
@@ -57,11 +61,30 @@
 }
 
 #studentItem {
-  width: 30%; 
+  width: 25%; 
   display: flex; 
   flex-direction: column;
   align-items: center;
   padding-bottom: 15px;
+}
+
+@media (max-width:820px){
+  #studentItem {
+    width: 33%;  
+    padding-bottom: 15px;
+  }
+
+  #campusItem {
+    width: 100%; 
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 375px){
+  #studentItem {
+    width: 50%;  
+    padding-bottom: 15px;
+  }
 }
 
 #studentInfo {

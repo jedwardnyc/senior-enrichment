@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { deleteCampus } from '../store';
 
 class CampusItem extends Component {
 
@@ -9,7 +10,7 @@ class CampusItem extends Component {
   };
 
   render () {
-    const { campus, studentArr } = this.props;
+    const { campus, studentArr, deleteCampus } = this.props;
     const students = studentArr.filter(student => student.campusId === campus.id );
     return (
       <div id='campusItem'>
@@ -24,11 +25,20 @@ class CampusItem extends Component {
               <h6 className='center'>{students.length} Enrolled Students</h6>
               : null 
             }
+            <div>
+              <Link to={`/campuses/${campus.id}`}><button className='btn btn-dark'>Edit</button></Link>&nbsp;
+              <button onClick={() => deleteCampus(campus)} className='btn btn-danger'>Delete</button>
+            </div>
           </div>
       </div>
     )
   };
 };
 
+const mapDispatchToProps = (dispatch, { history }) => {
+  return {
+    deleteCampus: (campus) => dispatch(deleteCampus(campus, history))
+  };
+};
 
-export default connect()(CampusItem);
+export default connect(null, mapDispatchToProps)(CampusItem);
