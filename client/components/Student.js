@@ -50,7 +50,9 @@ class Student extends Component {
           student && campus ? 
           <div>
             <h4 className='center'> This student is registered to: </h4>
-            <CampusItem campus={campus} studentArr={students}/>
+            <div id='campusOnStudent'>
+              <CampusItem campus={campus} studentArr={students}/>
+            </div>
           </div>  :
           <div>
             <h3 className='center'> This student is not registered to a campus! </h3>

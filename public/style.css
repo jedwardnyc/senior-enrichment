@@ -12,6 +12,7 @@
 
 .imageFlex {
   width: 50%;
+  height: auto;
 }
 
 .textArea {
@@ -54,6 +55,12 @@
   padding-right: 15px;
 }
 
+#campusOnStudent {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .campusButtons {
   display: flex; 
   align-items: flex-end; 
@@ -68,23 +75,12 @@
   padding-bottom: 15px;
 }
 
-@media (max-width:820px){
-  #studentItem {
-    width: 33%;  
-    padding-bottom: 15px;
-  }
-
-  #campusItem {
-    width: 100%; 
-    padding-bottom: 50px;
-  }
-}
-
-@media (max-width: 375px){
-  #studentItem {
-    width: 50%;  
-    padding-bottom: 15px;
-  }
+#studentItem {
+  width: 25%; 
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 15px;
 }
 
 #studentInfo {
@@ -117,3 +113,21 @@
   margin-bottom: 25px;
 }
 
+@media (max-width:820px){
+  #studentItem {
+    width: 33%;  
+    padding-bottom: 15px;
+  }
+
+  #campusItem {
+    width: 100%; 
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 375px){
+  #studentItem {
+    width: 50%;  
+    padding-bottom: 15px;
+  }
+}

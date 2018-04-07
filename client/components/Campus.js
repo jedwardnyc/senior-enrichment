@@ -23,7 +23,7 @@ const Campus = (props) => {
             <h6> {campus.addressLine2} </h6>
           </div>
           <div className='campusButtons'>
-            <Link to={`/campuses/${campus.id}/edit`}><button className='btn btn-dark'>Edit</button></Link>&nbsp;
+            <Link to={`/campuses/${campus.id}/edit`} params={{campus: campus.id}}><button className='btn btn-dark'>Edit</button></Link>&nbsp;
             <button onClick={() => props.deleteCampus(campus)} className='btn btn-danger'>Delete</button>
           </div>
         </div>
@@ -34,11 +34,11 @@ const Campus = (props) => {
       </div>
       <br />
       <br />
-      <div id='studentsList'>
+      <div id='studentsList' className='studentsPadding'>
         { 
           studentArr.length ? 
            studentArr.map(student => <StudentItem key={student.id} path={location.hash} student={student}/>) 
-           : <div className='studentsPadding'> There are no students currently enrolled at {campus.name} </div>
+           : <div> There are no students currently enrolled at {campus.name} </div>
         }
       </div>
     </div>

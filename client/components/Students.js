@@ -7,12 +7,12 @@ const Students = (props) => {
     const { students } = props;
     return (
       <div>
-        <div style={{ display: 'flex' }}>
-          <h1 style={{ flex: 6 }}> All Students </h1>
-          <Link to='/students/create' ><button style={{ flex: 1 }} className='btn btn-primary'> Add Student </button></Link>
+        <div className='flex'>
+          <h1 className='listTitle'> All Students </h1>
+          <Link to='/students/create' ><button className='btn btn-primary addButton'> Add Student </button></Link>
         </div>
         <br />
-        <div style={{listStyleType: 'none', display:'flex', flexWrap:'wrap', justifyContent:'space-evenly'}}>
+        <div id='studentsList'>
           { 
             students.map(student => {
               return ( 

@@ -22,8 +22,8 @@ class CreateStudent extends Component {
 
   render(){
     const names = this.state.fullName.split(' ');
-    const { campuses, errors } = this.props;
-    console.log(errors)
+    const { campuses, errors, campus } = this.props;
+    console.log(campus)
     return (
       <div>
         <h1> Create New Student </h1>
@@ -61,7 +61,7 @@ class CreateStudent extends Component {
             </div>
           </div>
           <br />
-          <select onChange={ev => this.setState({ campusId: ev.target.value*1 })}>
+          <select value={campus} onChange={ev => this.setState({ campusId: ev.target.value*1 })}>
             <option value={null}> --- Select a Campus --- </option> 
             {
               campuses.map(campus => {
@@ -81,7 +81,7 @@ class CreateStudent extends Component {
 const mapStateToProps = ({ campuses, errors }) => {
   return {
     campuses,
-    errors
+    errors,
   };
 };
 
