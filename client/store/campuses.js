@@ -5,9 +5,9 @@ import { errorHandler } from './errors';
 export const fetchCampuses = () => {
   return (dispatch) => {
     return axios.get('/api/campuses')
-    .then(res => res.data)
-    .then(campuses=> dispatch({ type: GET_CAMPUSES, campuses }))
-    .catch(err => errorHandler(err))
+      .then(res => res.data)
+      .then(campuses=> dispatch({ type: GET_CAMPUSES, campuses }))
+      .catch(err => dispatch(errorHandler(err.response.data.errors)))
   }
 };
 
@@ -19,7 +19,7 @@ export const createCampus = (campus, history) => {
         history.push(`/campuses/${campus.id}`)
         dispatch({ type: CREATE_CAMPUS, campus })
       })
-      .catch(err => dispatch(errorHandler(err)))
+      .catch(err => dispatch(errorHandler(err.response.data.errors)))
   }
 }
 
@@ -30,7 +30,7 @@ export const deleteCampus = (campus, history) => {
         dispatch({ type: DELETE_CAMPUS, campus })
         history.push('/campuses')
       })
-      .catch(err => errorHandler(err))
+      .catch(err => dispatch(errorHandler(err.response.data.errors)))
   }
 }
 
@@ -42,7 +42,7 @@ export const updateCampus = (campus, history) => {
         dispatch({ type: EDIT_CAMPUS, campus })
         history.push(`/campuses/${campus.id}`)
       })
-      .catch(err => errorHandler(err))
+      .catch(err => dispatch(errorHandler(err.response.data.errors)))
   }
 }
 

@@ -53,10 +53,8 @@ const Student = conn.define('student', {
       return `${this.firstName} ${this.lastName}`;
     }
   }
-  //may need a setter to get fullName to update
 });
 
 module.exports = Student;
 
 // beforevalidate hook if no email, make one
-//fix setter

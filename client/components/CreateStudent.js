@@ -14,7 +14,6 @@ class CreateStudent extends Component {
   onSubmit(ev){
     ev.preventDefault();
     this.props.createStudent(this.state);
-    console.log(this.props.errors)
   };
   
   componentWillUnmount(){
@@ -53,12 +52,14 @@ class CreateStudent extends Component {
             </div>
           <br />
           <label>GPA: </label>
-          <input 
-            onChange={ev => this.setState({ gpa: ev.target.value })}
-            className={`form-control ${errors.find(error => error.path === 'gpa') ? 'is-invalid' : ''}`} />
+          <div>
+            <input 
+              onChange={ev => this.setState({ gpa: ev.target.value })}
+              className={`form-control ${errors.find(error => error.path === 'gpa') ? 'is-invalid' : ''}`} />
             <div className="invalid-feedback">
               Please enter a number between 0-4.
             </div>
+          </div>
           <br />
           <select onChange={ev => this.setState({ campusId: ev.target.value*1 })} style={{align: 'center'}}>
             <option value={null}> --- Select a Campus --- </option> 

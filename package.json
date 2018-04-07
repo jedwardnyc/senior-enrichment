@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "seed": "node seed.js",
-    "postinstall": "npm run webpack",
+    "postinstall": "npm run webpack && npm run seed",
     "webpack": "./node_modules/webpack/bin/webpack.js",
     "start:dev": "npm run seed && npm run webpack -- -w & nodemon server/index",
     "start": "node server/index"

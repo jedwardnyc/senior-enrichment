@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateStudent } from '../store/students';
+import { updateStudent, clearErrors } from '../store';
 
 class EditStudent extends Component {
   constructor(props){
     super(props);
-    this.state = this.props.student;
+    this.state = this.props.student ? this.props.student : {};
     this.update = this.update.bind(this);
   };
 
   componentWillReceiveProps(nextProps){
     this.setState(nextProps.student);
+  };
+
+  componentWillUnmount(){
+    this.props.clearErrors();
   };
 
   update(ev){
@@ -19,7 +23,7 @@ class EditStudent extends Component {
   };
 
   render(){
-    const { student } = this.props;
+    const { student, errors } = this.props;
     const { fullName, imageURL, gpa, email, firstName, lastName } = this.state;
     if (!this.props.student) return null
     return (
@@ -27,34 +31,47 @@ class EditStudent extends Component {
         <h1> Edit {student.fullName}? </h1>
         <form onSubmit={this.update} className='form-control from-group'>
           <label>Full Name: </label>
-          <input 
-            onChange={ev => {
-              const names = ev.target.value.split(' ')
-              this.setState({ fullName: ev.target.value, firstName: names[0], lastName: names[1] })
-            }}
-            className='form-control form-inline' 
-            value={fullName} />
+          <div>
+            <input 
+              value={fullName}
+              onChange={ev => {
+                const names = ev.target.value.split(' ')
+                this.setState({ fullName: ev.target.value, firstName: names[0], lastName: names[1] })
+              }}
+              className={`form-control ${errors.find(error => error.path === 'lastName') ? 'is-invalid' : ''}`} />
+            <div className="invalid-feedback">
+              Please enter your full name.
+            </div>
+          </div>
           <br />
           <label>Avatar URL: </label>
           <input 
-            onChange={ev => ev.target.value ? this.setState({ imageURL: ev.target.value }) : null}
+            onChange={ev => this.setState({ imageURL: ev.target.value })}
             className='form-control' 
-            value={imageURL} />
+            value={imageURL || './public/images/default_student.jpg'} />
           <br />
           <label>Email: </label>
-          <input 
-            onChange={ev => ev.target.value ? 
-              this.setState({ email: ev.target.value }) 
-            : this.setState({ email: `${firstName}.${lastName}@school.com`})
-          }
-            className='form-control' 
-            value={email} />
+          <div>
+            <input 
+              value={email}
+              onChange={ev => this.setState({ email: ev.target.value }) } 
+              className={`form-control ${errors.find(error => error.path === 'email') ? 'is-invalid' : ''}`} />
+            <div className="invalid-feedback">
+              Please enter a valid email.
+            </div>
+          </div>
           <br />
           <label>GPA: </label>
-          <input 
-            onChange={ev => this.setState({ gpa: ev.target.value })}
-            className='form-control' 
-            value={gpa} />
+          <div>
+            <input 
+              onChange={ev => this.setState({ gpa: ev.target.value })}
+              type='number'
+              value={gpa} 
+              className={`form-control ${errors.find(error => error.path === 'gpa') ? 'is-invalid' : ''}`} />
+            <div className="invalid-feedback">
+              Please enter a GPA between 0.0 and 4.0.
+            </div>
+          </div>
           <br />
           <button className='btn btn-primary'>Save Changes</button>
         </form> 
@@ -63,15 +80,18 @@ class EditStudent extends Component {
   };
 };
 
-const mapStateToProps = ({ students }, ownProps) => {
+const mapStateToProps = ({ students, errors }, ownProps) => {
   return {
     student: students.find(student => student.id === ownProps.id*1 ),
+    errors
   };
 };
 
 const mapDispatchToProps = (dispatch, { history }) => {
+  const path = 'students';
   return {
-    updateStudent: (student) => dispatch(updateStudent(student, history))
+    updateStudent: (student) => dispatch(updateStudent(student, history, path)),
+    clearErrors: () => dispatch(clearErrors())
   };
 };
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CampusItem from './CampusItem';
-import { deleteStudent, updateStudent } from '../store/students';
+import { deleteStudent, updateStudent } from '../store';
 
 class Student extends Component {
   constructor(props){
@@ -34,7 +34,7 @@ class Student extends Component {
                 <div style={{width:'50%'}}>
                   <h3> {student.fullName} </h3>
                   <h3> {student.email} </h3>
-                  <h3> GPA: {student.gpa} </h3>
+                  <h3> <span className={`badge ${student.gpa > 2.5 ? 'badge-secondary' : 'badge-warning'}`}> GPA: {student.gpa} </span> </h3>
                 </div>
                 <div style={{justifyContent:'flex-end'}}>
                   <Link to={`/students/${student.id}/edit`}><button className='btn btn-success'>Edit</button></Link> &nbsp;
@@ -58,11 +58,11 @@ class Student extends Component {
           </div>
         }
           <form style={{textAlign: 'center'}} onSubmit={this.update}>
-            <select onChange={ev => this.setState({ campusId: ev.target.value*1 })} style={{align: 'center'}}>
+            <select value={student.campusId} onChange={ev => this.setState({ campusId: ev.target.value*1 })} style={{align: 'center'}}>
               <option value='null'> --- Unenrolled --- </option> 
               {
                 campuses.map(campus => {
-                  return <option selected={ campus.id === student.campusId } key={campus.id} value={campus.id}> {campus.name} </option>
+                  return <option key={campus.id} value={campus.id}> {campus.name} </option>
                 })
               }
             </select>
