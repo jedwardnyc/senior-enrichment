@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: aliceblue;
+}
+
 .center {
   text-align: center;
 }
@@ -12,7 +16,6 @@
 
 .imageFlex {
   width: 50%;
-  height: auto;
 }
 
 .textArea {
@@ -21,6 +24,22 @@
 
 .buttonSpacing {
   margin-left: 10px;
+}
+
+#home {
+  flex-direction: column;
+}
+
+#homeInfo {
+  flex-direction: column;
+}
+
+#homeButtons {
+  flex-direction: row;
+}
+
+.homeImages {
+  width: 50%;
 }
 
 #campusItem {

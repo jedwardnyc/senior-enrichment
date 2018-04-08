@@ -17,10 +17,18 @@ const Campus = conn.define('campus', {
     type: Sequelize.TEXT
   },
   addressLine1: {
-    type: Sequelize.STRING
+    allowNull: false,
+    type: Sequelize.STRING,
+    validate: {
+      notEmpty: true
+    }
   },
   addressLine2: {
-    type: Sequelize.STRING
+    allowNull: false,
+    type: Sequelize.STRING,
+    validate: {
+      notEmpty: true
+    }
   }
 });
 

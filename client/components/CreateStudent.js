@@ -55,7 +55,9 @@ class CreateStudent extends Component {
           <div>
             <input 
               onChange={ev => this.setState({ gpa: ev.target.value })}
-              className={`form-control ${errors.find(error => error.path === 'gpa') ? 'is-invalid' : ''}`} />
+              className={`form-control ${errors.find(error => error.path === 'gpa') ? 'is-invalid' : ''}`}
+              type='number'
+              step='0.1' />
             <div className="invalid-feedback">
               Please enter a number between 0-4.
             </div>

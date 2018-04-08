@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import { updateStudent } from '../store';
 
 const StudentItem = (props) => {
-    const { student, campus } = props;
+    const { student, campus, updateStudent } = props;
     const path = location.hash;
     return (
       <div id='studentItem'>
@@ -15,7 +15,10 @@ const StudentItem = (props) => {
             <h4> {student.fullName} </h4>
           </Link>
           {
-            path.includes('campuses') ? null : <h6> {campus ? campus.name : 'This student is not enrolled'} </h6> 
+            path.includes('campuses') ? 
+              <button onClick={()=> updateStudent({id: student.id, campusId: null})} className='center btn btn-sm btn-danger'> Remove </button>
+              : 
+              <h6> {campus ? campus.name : 'This student is not enrolled'} </h6> 
           }
         </div>
       </div>
@@ -23,10 +26,17 @@ const StudentItem = (props) => {
 ;}
 
 const mapStateToProps = ({ campuses }, { student }) => {
+  const campus = campuses.find(campus => campus.id === student.campusId)
   return {
     student,
-    campus: campuses.find(campus => campus.id === student.campusId)
+    campus
   };
 };
 
-export default connect(mapStateToProps)(StudentItem);
+const mapDispatchToProps = ( dispatch ) => {
+  return {
+    updateStudent: (student) => dispatch(updateStudent(student))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(StudentItem);

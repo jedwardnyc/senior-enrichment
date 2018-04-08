@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateCampus, updateStudent } from '../store';
+import { updateCampus, updateStudent, clearErrors } from '../store';
 import StudentItem from './StudentItem';
 
 class EditCampus extends Component{
@@ -27,10 +27,14 @@ class EditCampus extends Component{
   componentWillReceiveProps(nextProps){
     this.setState(nextProps.campus)
   }
+  
+  componentWillUnmount(){
+    this.props.clearErrors();
+  }
 
   render(){
     if (!this.props.campus) return null
-    const { campus, students, errors } = this.props;
+    const { campus, students, errors, unenrolledStudents } = this.props;
     const { name, imageURL, description, addressLine1, addressLine2 } = this.state;
     const { student } = this.state;
     const studentArr = students.filter(student => student.campusId === campus.id);
@@ -98,7 +102,7 @@ class EditCampus extends Component{
           <select className='form-control' onChange={(ev) => this.setState({ student: this.props.students.find(student => student.id === ev.target.value*1)})}>
             <option value='-1'> --- Select a Student --- </option>
             {
-              students.map(student => <option key={student.id} value={student.id}> {student.fullName} </option> )
+              unenrolledStudents.map(student => <option key={student.id} value={student.id}> {student.fullName} </option> )
             }
           </select>
           <button className='btn btn-dark'> Transfer </button>
@@ -118,12 +122,14 @@ class EditCampus extends Component{
   };
 };
 
-const mapStateToProps = ({campuses, students, errors}, ownProps) => {
-  const campus = campuses.find(campus => campus.id === ownProps.id*1 );
+const mapStateToProps = ({ campuses, students, errors }, { id }) => {
+  const campus = campuses.find(campus => campus.id === id*1 );
+  const unenrolledStudents = students.filter(student => student.campusId !== id*1)
   return {
     campus,
     students,
-    errors
+    errors,
+    unenrolledStudents
   };
 };
 
@@ -132,6 +138,7 @@ const mapDispatchToProps = (dispatch, { history }) => {
   return {
     updateCampus: (campus) => dispatch(updateCampus(campus, history)),
     updateStudent: (student) => dispatch(updateStudent(student, history, path)),
+    clearErrors: () => dispatch(clearErrors())
   };
 };
 

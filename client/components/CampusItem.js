@@ -26,7 +26,7 @@ class CampusItem extends Component {
               : null 
             }
             <div>
-              <Link to={`/campuses/${campus.id}`}><button className='btn btn-dark'>Edit</button></Link>&nbsp;
+              <Link to={`/campuses/${campus.id}/edit`}><button className='btn btn-dark'>Edit</button></Link>&nbsp;
               <button onClick={() => deleteCampus(campus)} className='btn btn-danger'>Delete</button>
             </div>
           </div>
