@@ -8,11 +8,10 @@ import StudentItem from './StudentItem';
 const Campus = (props) => {
   const { campus, students } = props;
   if (!campus) return null;
-  //if time, look at this, it probs shouldn't be there
-  const studentArr = students.filter(student => student.campusId === campus.id)
+  const studentArr = students.filter(student => student.campusId === campus.id);
   return (
-    <div>
-      <div className='jumbotron flex'>
+    <div className='navMargin'>
+      <div id='campusDetail'>
         <img className='imageFlex' src={campus.imageURL} />
         <div id='campusInfo'>
           <div>
@@ -30,15 +29,13 @@ const Campus = (props) => {
       </div>
       <div id='campusStudents'>
         <h1 className='listTitle'>Students on Campus</h1>
-        <Link to={`/students/create`}><button className='btn btn-primary addButton'> Add Student </button></Link>
+        <Link to={`/students/create`}><button className='btn btn-light addButton'> Add Student </button></Link>
       </div>
-      <br />
-      <br />
       <div id='studentsList' className='studentsPadding'>
         { 
           studentArr.length ? 
            studentArr.map(student => <StudentItem key={student.id} path={location.hash} student={student}/>) 
-           : <div> There are no students currently enrolled at {campus.name} </div>
+           : <div className='center'> There are no students currently enrolled at {campus.name} </div>
         }
       </div>
     </div>

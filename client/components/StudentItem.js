@@ -7,8 +7,8 @@ const StudentItem = (props) => {
     const { student, campus, updateStudent } = props;
     const path = location.hash;
     return (
-      <div id='studentItem'>
-        <img width="50%" src={student.imageURL} />
+      <div id='studentItem' className='navMargin'>
+        <img className='studentImage' width="50%" src={student.imageURL} />
         <br />
         <div className='center'>
           <Link className='center' to={`/students/${student.id}`}>

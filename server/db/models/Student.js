@@ -57,4 +57,3 @@ const Student = conn.define('student', {
 
 module.exports = Student;
 
-// beforevalidate hook if no email, make one

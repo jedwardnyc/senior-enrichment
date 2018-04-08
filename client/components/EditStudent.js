@@ -27,7 +27,7 @@ class EditStudent extends Component {
     const { fullName, imageURL, gpa, email, firstName, lastName } = this.state;
     if (!this.props.student) return null
     return (
-      <div>
+      <div className='navMargin edit'>
         <h1> Edit {student.fullName}? </h1>
         <form onSubmit={this.update} className='form-control from-group'>
           <label>Full Name: </label>
@@ -36,7 +36,7 @@ class EditStudent extends Component {
               value={fullName}
               onChange={ev => {
                 const names = ev.target.value.split(' ')
-                this.setState({ fullName: ev.target.value, firstName: names[0], lastName: names[1] })
+                this.setState({ fullName: ev.target.value, firstName: names[0], lastName: names.slice(1).join(' ') })
               }}
               className={`form-control ${errors.find(error => error.path === 'lastName') ? 'is-invalid' : ''}`} />
             <div className="invalid-feedback">
@@ -73,7 +73,7 @@ class EditStudent extends Component {
             </div>
           </div>
           <br />
-          <button className='btn btn-primary'>Save Changes</button>
+          <button className='btn'>Save Changes</button>
         </form> 
       </div>
     )

@@ -6,7 +6,6 @@ import StudentItem from './StudentItem';
 class EditCampus extends Component{
   constructor(props){
     super(props);
-    const student = {}
     this.state = Object.assign({}, this.props.campus, { student: {} });
     this.update = this.update.bind(this);
     this.transferStudent = this.transferStudent.bind(this);
@@ -20,17 +19,16 @@ class EditCampus extends Component{
   transferStudent(ev){
     ev.preventDefault();
     this.state.student.campusId = this.props.campus.id;
-    this.setState({ stay: true })
     this.props.updateStudent(this.state.student);
-  }
+  };
 
   componentWillReceiveProps(nextProps){
-    this.setState(nextProps.campus)
-  }
+    this.setState(nextProps.campus);
+  };
   
   componentWillUnmount(){
     this.props.clearErrors();
-  }
+  };
 
   render(){
     if (!this.props.campus) return null
@@ -39,7 +37,7 @@ class EditCampus extends Component{
     const { student } = this.state;
     const studentArr = students.filter(student => student.campusId === campus.id);
     return (
-      <div>
+      <div className='navMargin edit'>
       <h1> Edit {campus ? campus.name : null}? </h1>
       <form onSubmit={this.update} className='form-control from-group'>
         <label> Campus Name: </label>
@@ -94,21 +92,20 @@ class EditCampus extends Component{
           </div>
         </div>
         <br />
-        <button className='btn btn-primary'>Save Changes</button>
+        <button className='btn btn-light'>Save Changes</button>
       </form>
       <div>
         <h2> Transfer a student to this campus: </h2>
         <form onSubmit={this.transferStudent} className='form-inline'>
-          <select className='form-control' onChange={(ev) => this.setState({ student: this.props.students.find(student => student.id === ev.target.value*1)})}>
+          <select id='dropdown' className='form-control' onChange={(ev) => this.setState({ student: this.props.students.find(student => student.id === ev.target.value*1)})}>
             <option value='-1'> --- Select a Student --- </option>
             {
               unenrolledStudents.map(student => <option key={student.id} value={student.id}> {student.fullName} </option> )
             }
           </select>
-          <button className='btn btn-dark'> Transfer </button>
+          <button className='btn btn-light buttonSpacing'> Transfer </button>
         </form>
       </div>
-      <hr />
       <h2 className='flex'> Students on Campus: </h2>
       <div id='studentsList' className='studentsPadding'>
       { 
@@ -124,7 +121,7 @@ class EditCampus extends Component{
 
 const mapStateToProps = ({ campuses, students, errors }, { id }) => {
   const campus = campuses.find(campus => campus.id === id*1 );
-  const unenrolledStudents = students.filter(student => student.campusId !== id*1)
+  const unenrolledStudents = students.filter(student => student.campusId !== id*1);
   return {
     campus,
     students,

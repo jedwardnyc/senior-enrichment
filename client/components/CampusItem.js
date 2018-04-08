@@ -13,7 +13,7 @@ class CampusItem extends Component {
     const { campus, studentArr, deleteCampus } = this.props;
     const students = studentArr.filter(student => student.campusId === campus.id );
     return (
-      <div id='campusItem'>
+      <div id='campusItem' className='navMargin'>
           <div className='imageFlex'>
             <img width='100%' src={campus.imageURL} />
           </div>

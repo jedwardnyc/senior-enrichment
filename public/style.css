@@ -1,13 +1,106 @@
+@font-face {
+  font-family: corroded;
+  src: url('./fonts/corroded.ttf');
+}
+
+@font-face {
+  font-family: whiterabbit;
+  src: url('./fonts/whiterabbit.ttf');
+}
+
+@font-face {
+  font-family: nasalization;
+  src: url('./fonts/nasalization.ttf');
+}
+
+@font-face {
+  font-family: hacka;
+  src: url('./fonts/hacka.ttf');
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: aliceblue;
+  background-color: #444545;
+  color: #DCDCDC;
+  font-family: nasalization;
+}
+
+a {
+  color: #020402;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #FFFFFF;
+}
+
+label {
+ font-weight: bold;
+}
+
+.edit {
+  color: limegreen;
+  font-family: whiterabbit;
+  border-color: limegreen; 
+}
+
+.edit a {
+  color: limegreen;
+  font-family: whiterabbit;
+  border-color: limegreen; 
+}
+
+.edit #studentItem {
+  background-color: black;
+}
+
+.edit .btn {
+  background-color: #020402;
+  color: limegreen;
+  font-family: whiterabbit;
+  border-color: limegreen;
+}
+
+.edit #dropdown {
+  background-color: #020402;
+  color: limegreen;
+  font-family: whiterabbit;
+  border-color: limegreen;
+  width: 600px;
+  height: 30px;
+}
+
+.form-control {
+  background-color: #020402;
+  color: limegreen;
+  font-family: whiterabbit;
+  border-color: limegreen;
+}
+
+.form-control:focus {
+  background-color: #020402;
+  color: limegreen;
+  border-color: limegreen;
+}
+
+#dropdown{
+  width: 600px;
+  height: 30px;
 }
 
 .center {
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hackButton {
+  background-color: #020402;
+  color: limegreen;
+  border-color: limegreen;
 }
 
 .flex {
@@ -16,6 +109,7 @@ body {
 
 .imageFlex {
   width: 50%;
+  margin: 15px;
 }
 
 .textArea {
@@ -27,7 +121,9 @@ body {
 }
 
 #home {
+  display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 #homeInfo {
@@ -35,17 +131,52 @@ body {
 }
 
 #homeButtons {
-  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  font-family: nasalization;
 }
 
-.homeImages {
-  width: 50%;
+#homeHeader {
+  flex-direction: column;
+  align-items: center;
+  background-image: url('./images/MHI_home.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #FAE8EB;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+
+.homeText {
+  font-size: 100px;
+  text-transform: uppercase;
+  font-family: corroded;
+}
+
+.homeSubtext {
+  font-size: 70px;
+  text-transform: uppercase;
+  font-family: corroded;
 }
 
 #campusItem {
   display: flex;
+  margin-bottom: 20px;
+  padding-right: 25px;
+  background-color: #A9A9A9;
+  border-radius: 5px;
+  color: black;
   width: 45%; 
-  padding-bottom: 50px;
+}
+
+#campusDetail {
+  display: flex;
+  padding: 20px;
+  margin-bottom: 50px;
+  background-color: #A9A9A9;
+  border-radius: 5px;
+  color: black;
 }
 
 #campusInfo {
@@ -84,6 +215,7 @@ body {
   display: flex; 
   align-items: flex-end; 
   justify-content: flex-end;
+
 }
 
 #studentItem {
@@ -91,28 +223,41 @@ body {
   display: flex; 
   flex-direction: column;
   align-items: center;
-  padding-bottom: 15px;
+  padding: 15px 0 15px 0;
+  background-color: #A9A9A9;
+  border-radius: 5px;
+  margin: 15px 15px;
+  color: black;
 }
 
-#studentItem {
-  width: 25%; 
+#studentDetail {
   display: flex; 
   flex-direction: column;
   align-items: center;
-  padding-bottom: 15px;
+  background-color: #A9A9A9;
+  border-radius: 5px;
+  padding: 20px 10px;
+  margin: 30px 25px;
+  color: black;
 }
 
 #studentInfo {
   width: 50%;
+  margin-top: 10px; 
+}
+
+.studentImage {
+  border-radius: 50%;
 }
 
 #studentsList {
   display: flex; 
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .listTitle {
+  text-decoration: underline;
   flex: 6;
 }
 
@@ -122,14 +267,26 @@ body {
 
 .studentButtons {
   justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .studentsPadding {
   padding-bottom: 120px;
 }
 
+nav a {
+  color: #FAE8EB;
+  text-decoration: none;
+  font-family: corroded;
+  text-transform: uppercase;
+}
+
+#nav {
+  background-color: #020402;
+}
+
 .navMargin {
-  margin-bottom: 25px;
+  margin-top: 25px;
 }
 
 @media (max-width:820px){

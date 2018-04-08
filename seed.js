@@ -36,7 +36,7 @@ const randomStudent = () => {
     firstName: first_name,
     lastName: last_name,
     email: `${first_name.toLowerCase()}.${last_name.toLowerCase()}@MHIacademy.edu`,
-    gpa: Number(((Math.random()*10)%2).toFixed(1))+1,
+    gpa: chance.floating({min: 0.5, max: 4, fixed: 1}), 
     imageURL: avatar.generate_avatar({ gender }),
   });
 };

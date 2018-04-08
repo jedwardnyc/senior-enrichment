@@ -24,14 +24,14 @@ class Student extends Component {
     const { student, students, campuses, campus, deleteStudent, id } = this.props;
     if (student) {
       return (
-        <div>
-          <div className='jumbotron' >
+        <div className='studentsPadding'>
+          <div id='studentDetail' >
             <div className='flex'>
               <div className='imageFlex'>
-                <img src={student.imageURL} />
+                <img className='studentImage' src={student.imageURL} />
               </div>
-              <div>
-                <div id='studentInfo'>
+              <div id='studentInfo'>
+                <div>
                   <h3> {student.fullName} </h3>
                   <h3> {student.email} </h3>
                   <h3> <span className={`badge ${student.gpa > 2.8 ? 'badge-secondary' : student.gpa > 2.0 ? 'badge-warning' : 'badge-danger'}`}> GPA: {student.gpa} </span> </h3>
@@ -60,7 +60,7 @@ class Student extends Component {
           </div>
         }
           <form className='center' onSubmit={this.update}>
-            <select value={student.campusId} onChange={ev => this.setState({ campusId: ev.target.value*1 })}>
+            <select id='dropdown' defaultValue={this.state.campusId} onChange={ev => this.setState({ campusId: ev.target.value*1 })}>
               <option value='null'> --- Unenrolled --- </option> 
               {
                 campuses.map(campus => {
@@ -68,7 +68,7 @@ class Student extends Component {
                 })
               }
             </select>
-            <button className='btn btn-dark btn-sm buttonSpacing'> {campus ? 'Change Campus' : 'Add to Campus'} </button>
+            <button className='btn btn-light btn-sm buttonSpacing'> {campus ? 'Change Campus' : 'Add to Campus'} </button>
           </form>
         </div>
       </div>

@@ -11,10 +11,10 @@ class Campuses extends Component{
   render(){
     const { campuses, students } = this.props;
     return (
-      <div>
-        <div className='flex campuses'>
+      <div className='navMargin'>
+        <div className='campuses'>
           <h1 className='listTitle'> All Campuses </h1>
-          <Link to='/campuses/create'><button className='btn btn-primary addButton'> Add Campus </button></Link>
+          <Link to='/campuses/create'><button className='btn btn-light addButton'> Add Campus </button></Link>
         </div>
         <br />
         {

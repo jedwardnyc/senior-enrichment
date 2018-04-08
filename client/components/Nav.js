@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 const Nav = (props) => {
   window.scrollTo(0,0)
   return (
-    <nav className="navMargin navbar navbar-light bg-light justify-content-between">
-      <a className="navbar-brand" href="/">Home</a>
+    <nav id='nav' className='navbar justify-content-between'>
+      <a className="navbar-brand" href="/">
+      <i className="fas fa-space-shuttle"></i> Margaret Hamilton Interplanetary Academy
+      </a>
       <ul className='nav'>
-        <li className='nav-item'>
+        <li className='navLi nav-item'>
           <Link to='/students' className='nav-link'>Students</Link>
         </li>
-        <li className='nav-item'>
+        <li className='navLi nav-item'>
           <Link to='/campuses' className='nav-link'>Campuses</Link>
         </li>
       </ul>

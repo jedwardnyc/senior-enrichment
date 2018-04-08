@@ -4,8 +4,8 @@ import { createCampus } from '../store';
 
 class CreateCampus extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {};
     this.onSubmit = this.onSubmit.bind(this);
   };
@@ -17,9 +17,8 @@ class CreateCampus extends Component {
 
   render(){
     const { errors } = this.props;
-    console.log(errors)
     return (
-      <div>
+      <div className='navMargin edit'>
         <h1> Create New Campus </h1>
         <form onSubmit={this.onSubmit} className='form-control from-group'>
             <label>Name: </label>
@@ -36,6 +35,26 @@ class CreateCampus extends Component {
             <input 
               onChange={ev => ev.target.value ? this.setState({ imageURL: ev.target.value }) : null}
               className='form-control' />
+            <br />
+            <label> Address Line 1: </label>
+            <div>
+              <input 
+                onChange={ev => this.setState({ addressLine1: ev.target.value })}
+                className={`form-control ${errors.find(error => error.path === 'addressLine1') ? 'is-invalid' : ''}`} />
+              <div className="invalid-feedback">
+                Please enter a street address.
+              </div>
+            </div>
+            <br />
+            <label> Address Line 2: </label>
+            <div>
+              <input 
+                onChange={ev => this.setState({ addressLine2: ev.target.value })}
+                className={`form-control ${errors.find(error => error.path === 'addressLine2') ? 'is-invalid' : ''}`} />
+              <div className="invalid-feedback">
+                Please enter a city, state and zipcode.
+              </div>
+            </div>
             <br />
             <label>Description: </label>
             <div>

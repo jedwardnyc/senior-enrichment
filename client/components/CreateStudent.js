@@ -18,21 +18,23 @@ class CreateStudent extends Component {
   
   componentWillUnmount(){
     this.props.clearErrors();
-  }
+  };
 
   render(){
-    const names = this.state.fullName.split(' ');
     const { campuses, errors, campus } = this.props;
-    console.log(campus)
     return (
-      <div>
+      <div className='navMargin edit'>
         <h1> Create New Student </h1>
         <form onSubmit={this.onSubmit} className='form-control from-group'>
           <label>Full Name: </label>
           <div>
             <input 
-              onChange={ev => this.setState({ fullName: ev.target.value, firstName: names[0], lastName: names[1] })}
-              className={`form-control ${errors.find(error => error.path === 'lastName') ? 'is-invalid' : ''}`} />
+              className={`form-control ${errors.find(error => error.path === 'lastName') ? 'is-invalid' : ''}`}
+              onChange={ev => {
+                const names = ev.target.value.split(' ')
+                this.setState({ fullName: ev.target.value, firstName: names[0], lastName: names.slice(1).join(' ') })
+              }}
+               />
             <div className="invalid-feedback">
               Please enter your full name (first and last).
             </div>
@@ -63,8 +65,8 @@ class CreateStudent extends Component {
             </div>
           </div>
           <br />
-          <select value={campus} onChange={ev => this.setState({ campusId: ev.target.value*1 })}>
-            <option value={null}> --- Select a Campus --- </option> 
+          <select id='dropdown' value={campus} onChange={ev => this.setState({ campusId: ev.target.value*1 })}>
+            <option value={undefined}> --- Select a Campus --- </option> 
             {
               campuses.map(campus => {
                 return <option key={campus.id} value={campus.id}> {campus.name} </option>
@@ -73,7 +75,7 @@ class CreateStudent extends Component {
           </select>
           <br />
           <br />
-          <button className='btn btn-primary'>Save Changes</button>
+          <button className='btn btn-light'>Save Changes</button>
         </form> 
       </div> 
     )
