@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = (props) => {
+  const studentButton = window.innerWidth > 670 ? 'CLICK HERE FOR ALL STUDENTS' : 'STUDENTS';
+  const campusButton = window.innerWidth > 670 ? 'CLICK HERE FOR ALL CAMPUSES' : 'CAMPUSES';
   return (
     <div id='home'>
       <div id='homeHeader'>
@@ -12,9 +14,9 @@ const Home = (props) => {
       </div>
       <br />
         <div id='homeButtons'>
-          <Link to='/students'> <button className='btn btn-dark'> CLICK HERE FOR ALL STUDENTS </button> </Link>
+          <Link to='/students'> <button className='btn btn-dark'> {studentButton} </button> </Link>
           &nbsp;
-          <Link to='/campuses'> <button className='btn btn-dark'> CLICK HERE FOR ALL CAMPUSES </button> </Link>
+          <Link to='/campuses'> <button className='btn btn-dark'> {campusButton} </button> </Link>
         </div>
       </div>
     </div>

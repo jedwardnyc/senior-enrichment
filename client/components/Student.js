@@ -33,7 +33,7 @@ class Student extends Component {
               <div id='studentInfo'>
                 <div>
                   <h3> {student.fullName} </h3>
-                  <h3> {student.email} </h3>
+                  <h3 className='email'> {student.email} </h3>
                   <h3> <span className={`badge ${student.gpa > 2.8 ? 'badge-secondary' : student.gpa > 2.0 ? 'badge-warning' : 'badge-danger'}`}> GPA: {student.gpa} </span> </h3>
                 </div>
                 <div className='studentButtons'>

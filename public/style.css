@@ -1,3 +1,5 @@
+/* Font Families */
+
 @font-face {
   font-family: corroded;
   src: url('./fonts/corroded.ttf');
@@ -17,6 +19,8 @@
   font-family: hacka;
   src: url('./fonts/hacka.ttf');
 }
+
+/* Global */
 
 * {
   box-sizing: border-box;
@@ -40,6 +44,41 @@ a:hover {
 label {
  font-weight: bold;
 }
+
+#dropdown{
+  width: 600px;
+  height: 30px;
+}
+
+.addButton {
+  flex: 1;
+}
+
+.buttonSpacing {
+  margin-left: 10px;
+}
+
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.imageFlex {
+  width: 50%;
+  margin: 15px;
+}
+
+.listTitle {
+  text-decoration: underline;
+  flex: 6;
+}
+
+/* Edit Pages */
 
 .edit {
   color: limegreen;
@@ -86,48 +125,22 @@ label {
   border-color: limegreen;
 }
 
-#dropdown{
-  width: 600px;
-  height: 30px;
-}
-
-.center {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .hackButton {
   background-color: #020402;
   color: limegreen;
   border-color: limegreen;
 }
 
-.flex {
-  display: flex;
-}
-
-.imageFlex {
-  width: 50%;
-  margin: 15px;
-}
-
 .textArea {
   height: 250px;
 }
 
-.buttonSpacing {
-  margin-left: 10px;
-}
+/* Home Page */
 
 #home {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-#homeInfo {
-  flex-direction: column;
 }
 
 #homeButtons {
@@ -148,10 +161,8 @@ label {
   text-align: center;
 }
 
-.homeText {
-  font-size: 100px;
-  text-transform: uppercase;
-  font-family: corroded;
+#homeInfo {
+  flex-direction: column;
 }
 
 .homeSubtext {
@@ -160,14 +171,17 @@ label {
   font-family: corroded;
 }
 
-#campusItem {
-  display: flex;
-  margin-bottom: 20px;
-  padding-right: 25px;
-  background-color: #A9A9A9;
-  border-radius: 5px;
-  color: black;
-  width: 45%; 
+.homeText {
+  font-size: 100px;
+  text-transform: uppercase;
+  font-family: corroded;
+}
+
+/* Campuses */ 
+
+#campuses {
+  display: flex; 
+  justify-content: center;
 }
 
 #campusDetail {
@@ -188,14 +202,14 @@ label {
   padding-left: 20px;
 }
 
-#campusStudents {
+#campusItem {
   display: flex;
-  margin-bottom: 45px;
-}
-
-#campuses {
-  display: flex; 
-  justify-content: center;
+  margin-bottom: 20px;
+  padding-right: 25px;
+  background-color: #A9A9A9;
+  border-radius: 5px;
+  color: black;
+  width: 45%; 
 }
 
 #campusesList {
@@ -211,24 +225,23 @@ label {
   width: 100%;
 }
 
+#campusStudents {
+  display: flex;
+  margin-bottom: 45px;
+}
+
 .campusButtons {
   display: flex; 
   align-items: flex-end; 
   justify-content: flex-end;
-
 }
 
-#studentItem {
-  width: 25%; 
-  display: flex; 
-  flex-direction: column;
-  align-items: center;
-  padding: 15px 0 15px 0;
-  background-color: #A9A9A9;
-  border-radius: 5px;
-  margin: 15px 15px;
-  color: black;
+.campusImage {
+  width: 50%;
+  margin: 15px;
 }
+
+/* Students */
 
 #studentDetail {
   display: flex; 
@@ -243,11 +256,19 @@ label {
 
 #studentInfo {
   width: 50%;
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
-.studentImage {
-  border-radius: 50%;
+#studentItem {
+  width: 20%; 
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 0 15px 0;
+  background-color: #A9A9A9;
+  border-radius: 5px;
+  margin: 15px 15px;
+  color: black;
 }
 
 #studentsList {
@@ -256,23 +277,20 @@ label {
   justify-content: space-between;
 }
 
-.listTitle {
-  text-decoration: underline;
-  flex: 6;
-}
-
-.addButton {
-  flex: 1;
-}
-
 .studentButtons {
   justify-content: flex-end;
   align-items: flex-end;
 }
 
+.studentImage {
+  border-radius: 50%;
+}
+
 .studentsPadding {
   padding-bottom: 120px;
 }
+
+/* Nav */
 
 nav a {
   color: #FAE8EB;
@@ -289,21 +307,71 @@ nav a {
   margin-top: 25px;
 }
 
-@media (max-width:820px){
+
+/* Flex Breakpoints */
+
+@media (max-width:1000px){
+  #dropdown {
+    width: 400px;
+  }
+
   #studentItem {
-    width: 33%;  
+    width: 40%;  
     padding-bottom: 15px;
+    margin: inherit auto;
   }
 
   #campusItem {
     width: 100%; 
     padding-bottom: 50px;
   }
+
+  .email {
+    visibility: hidden;
+    display: none;
+  }
 }
 
-@media (max-width: 375px){
-  #studentItem {
-    width: 50%;  
+@media (max-width: 660px){
+  #campusItem {
+    display: block;
+    /* width: 100%;   */
     padding-bottom: 15px;
+    margin: inherit auto;
+  }
+
+  #studentItem {
+    width: 100%;  
+    padding-bottom: 15px;
+    margin: inherit auto;
+  }
+
+  #studentInfo {
+    font-size: 40%;
+  }
+
+  .homeText {
+    font-size: 70px;
+  }
+
+  .homeSubtext {
+    font-size: 40px;
+  }
+
+  .email, .studentImage, .campusImage {
+    visibility: hidden;
+    display: none;
+  }
+
+  .flex { 
+    display: block;
+  }
+
+  #dropdown {
+    width: 200px;
+  }
+
+  .studentButtons {
+    flex-direction: column;
   }
 }
