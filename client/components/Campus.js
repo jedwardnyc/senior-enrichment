@@ -12,7 +12,7 @@ const Campus = (props) => {
   return (
     <div className='navMargin'>
       <div id='campusDetail'>
-        <img className='imageFlex' src={campus.imageURL} />
+        <img className='campusImage' src={campus.imageURL} />
         <div id='campusInfo'>
           <div>
             <h1> {campus.name} </h1> 

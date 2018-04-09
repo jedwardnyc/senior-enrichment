@@ -367,8 +367,21 @@ nav a {
     display: block;
   }
 
-  #dropdown {
+  #dropdown, .edit #dropdown {
     width: 200px;
+    color: #020402;
+    background-color: #FAE8EB;
+    border-color: #020402
+  }
+
+  #campusDetail {
+    text-align: center;
+    justify-content: center;
+    flex-basis: auto;
+  }
+
+  #campusInfo{
+    display:block;
   }
 
   .studentButtons {
