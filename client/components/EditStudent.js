@@ -66,6 +66,9 @@ class EditStudent extends Component {
             <input 
               onChange={ev => this.setState({ gpa: ev.target.value })}
               type='number'
+              min='0'
+              max='4'
+              step='0.1'
               value={gpa} 
               className={`form-control ${errors.find(error => error.path === 'gpa') ? 'is-invalid' : ''}`} />
             <div className="invalid-feedback">
