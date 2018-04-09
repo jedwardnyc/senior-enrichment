@@ -24,7 +24,7 @@ class Student extends Component {
     const { student, students, campuses, campus, deleteStudent, id } = this.props;
     if (student) {
       return (
-        <div className='studentsPadding'>
+        <div id='student' className='studentsPadding'>
           <div id='studentDetail' >
             <div className='flex'>
               <div className='imageFlex'>
@@ -50,7 +50,7 @@ class Student extends Component {
           student && campus ? 
           <div>
             <h4 className='center'> This student is registered to: </h4>
-            <div id='campusOnStudent'>
+            <div>
               <CampusItem campus={campus} studentArr={students}/>
             </div>
           </div>  :
