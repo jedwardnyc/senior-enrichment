@@ -41,8 +41,8 @@ const randomStudent = () => {
   });
 };
 
-const campuses = doTimes(numOfCampuses, randomCampus)
-const students = doTimes(numOfStudents, randomStudent)
+const campuses = doTimes(numOfCampuses, randomCampus);
+const students = doTimes(numOfStudents, randomStudent);
 
 const seed = () => {
   return Promise.all(campuses.map(campus => campus.save()))
