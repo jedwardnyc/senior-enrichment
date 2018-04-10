@@ -12,7 +12,7 @@ class Campuses extends Component{
     const { campuses, students } = this.props;
     return (
       <div className='navMargin'>
-        <div className='campuses'>
+        <div id='campuses'>
           <h1 className='listTitle'> All Campuses </h1>
           <Link to='/campuses/create'><button className='btn btn-light addButton'> Add Campus </button></Link>
         </div>

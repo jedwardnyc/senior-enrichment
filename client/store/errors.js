@@ -11,7 +11,7 @@ export const clearErrors = () => {
 const errorReducer = (state = [], action) => {
   switch(action.type){
     case ERROR:
-      return action.errors
+      return action.errors;
     case CLEAR_ERROR:
       return action.error;
     default:

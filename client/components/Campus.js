@@ -13,7 +13,7 @@ const Campus = (props) => {
     <div className='navMargin'>
       <div id='campusDetail'>
         <img className='campusImage' src={campus.imageURL} />
-        <div id='campusInfo'>
+        <div className='campusInfo'>
           <div>
             <h1> {campus.name} </h1> 
             <p> {campus.description} </p>
@@ -31,11 +31,11 @@ const Campus = (props) => {
         <h1 className='listTitle'>Students on Campus</h1>
         <Link to={`/students/create`}><button className='btn btn-light addButton'> Add Student </button></Link>
       </div>
-      <div id='studentsList' className='studentsPadding'>
+      <div className='studentsPadding studentsList'>
         { 
           studentArr.length ? 
-           studentArr.map(student => <StudentItem key={student.id} path={location.hash} student={student}/>) 
-           : <div className='center'> There are no students currently enrolled at {campus.name} </div>
+          studentArr.map(student => <StudentItem key={student.id} path={location.hash} student={student}/>) 
+          : <div className='center'> There are no students currently enrolled at {campus.name} </div>
         }
       </div>
     </div>

@@ -17,10 +17,10 @@ class CampusItem extends Component {
           <div className='campusImage'>
             <img width='100%' src={campus.imageURL} />
           </div>
-          <div id='campusInfo'>
-          <Link to={`/campuses/${campus.id}`}>
-            <h3 className='center'> {campus.name} </h3>
-          </Link>
+          <div className='campusInfo'>
+            <Link to={`/campuses/${campus.id}`}>
+              <h3 className='center'> {campus.name} </h3>
+            </Link>
             { students ? 
               <h6 className='center'>{students.length} Enrolled Students</h6>
               : null 

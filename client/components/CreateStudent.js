@@ -65,7 +65,7 @@ class CreateStudent extends Component {
             </div>
           </div>
           <br />
-          <select id='dropdown' value={campus} onChange={ev => this.setState({ campusId: ev.target.value*1 })}>
+          <select className='dropdown' value={campus} onChange={ev => this.setState({ campusId: ev.target.value*1 })}>
             <option value={undefined}> --- Select a Campus --- </option> 
             {
               campuses.map(campus => {

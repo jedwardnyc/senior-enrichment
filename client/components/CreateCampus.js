@@ -21,53 +21,53 @@ class CreateCampus extends Component {
       <div className='navMargin edit'>
         <h1> Create New Campus </h1>
         <form onSubmit={this.onSubmit} className='form-control from-group'>
-            <label>Name: </label>
-            <div>
-              <input 
-                onChange={ev => this.setState({ name: ev.target.value })}
-                className={`form-control ${errors.find(error => error.path === 'name') ? 'is-invalid' : ''}`} />
-              <div className="invalid-feedback">
-                Please enter a name for the Campus.
-              </div>
-            </div>
-            <br />
-            <label>Picture of Campus (URLs only please): </label>
+          <label>Name: </label>
+          <div>
             <input 
-              onChange={ev => ev.target.value ? this.setState({ imageURL: ev.target.value }) : null}
-              className='form-control' />
-            <br />
-            <label> Address Line 1: </label>
-            <div>
-              <input 
-                onChange={ev => this.setState({ addressLine1: ev.target.value })}
-                className={`form-control ${errors.find(error => error.path === 'addressLine1') ? 'is-invalid' : ''}`} />
-              <div className="invalid-feedback">
-                Please enter a street address.
-              </div>
+              onChange={ev => this.setState({ name: ev.target.value })}
+              className={`form-control ${errors.find(error => error.path === 'name') ? 'is-invalid' : ''}`} />
+            <div className="invalid-feedback">
+              Please enter a name for the Campus.
             </div>
-            <br />
-            <label> Address Line 2: </label>
-            <div>
-              <input 
-                onChange={ev => this.setState({ addressLine2: ev.target.value })}
-                className={`form-control ${errors.find(error => error.path === 'addressLine2') ? 'is-invalid' : ''}`} />
-              <div className="invalid-feedback">
-                Please enter a city, state and zipcode.
-              </div>
+          </div>
+          <br />
+          <label>Picture of Campus (URLs only please): </label>
+          <input 
+            onChange={ev => ev.target.value ? this.setState({ imageURL: ev.target.value }) : null}
+            className='form-control' />
+          <br />
+          <label> Address Line 1: </label>
+          <div>
+            <input 
+              onChange={ev => this.setState({ addressLine1: ev.target.value })}
+              className={`form-control ${errors.find(error => error.path === 'addressLine1') ? 'is-invalid' : ''}`} />
+            <div className="invalid-feedback">
+              Please enter a street address.
             </div>
-            <br />
-            <label>Description: </label>
-            <div>
-              <input 
-                onChange={ev => this.setState({ description: ev.target.value })}
-                className={`form-control ${errors.find(error => error.path === 'description') ? 'is-invalid' : ''}`} />
-              <div className="invalid-feedback">
-                Please enter a description.
-              </div>
+          </div>
+          <br />
+          <label> Address Line 2: </label>
+          <div>
+            <input 
+              onChange={ev => this.setState({ addressLine2: ev.target.value })}
+              className={`form-control ${errors.find(error => error.path === 'addressLine2') ? 'is-invalid' : ''}`} />
+            <div className="invalid-feedback">
+              Please enter a city, state and zipcode.
             </div>
-            <br />
-            <button className='btn btn-primary'>Save Changes</button>
-          </form> 
+          </div>
+          <br />
+          <label>Description: </label>
+          <div>
+            <input 
+              onChange={ev => this.setState({ description: ev.target.value })}
+              className={`form-control ${errors.find(error => error.path === 'description') ? 'is-invalid' : ''}`} />
+            <div className="invalid-feedback">
+              Please enter a description.
+            </div>
+          </div>
+          <br />
+          <button className='btn btn-primary'>Save Changes</button>
+        </form> 
       </div> 
     )
   };

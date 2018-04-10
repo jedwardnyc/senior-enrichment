@@ -6,14 +6,14 @@ const Home = (props) => {
   const campusButton = window.innerWidth > 670 ? 'CLICK HERE FOR ALL CAMPUSES' : 'CAMPUSES';
   return (
     <div id='home'>
-      <div id='homeHeader'>
+      <div className='homeHeader'>
         <h2 className='homeText'> Margaret Hamilton</h2>
         <h3 className='homeSubtext'>Interplanetary Academy of Javascript </h3>
-        <div id='homeInfo' className='flex center'>
+        <div className='homeInfo'>
           <h4> "The school of the future!" - Some Scientist Once </h4>
-      </div>
-      <br />
-        <div id='homeButtons'>
+        </div>
+        <br />
+        <div className='homeButtons'>
           <Link to='/students'> <button className='btn btn-dark'> {studentButton} </button> </Link>
           &nbsp;
           <Link to='/campuses'> <button className='btn btn-dark'> {campusButton} </button> </Link>

@@ -26,17 +26,17 @@ class App extends Component{
         <div>
           <Nav />
           <div className='container-fluid'>
-          <Switch>
-            <Route path='/' exact component={ Home } />
-            <Route path='/students' exact component={ Students } />
-            <Route path='/students/create' exact render={({history}) =>  <CreateStudent history={history} /> } />
-            <Route path='/students/:id' exact render={({match, history}) =>  <Student history={history} id={match.params.id} /> } />
-            <Route path='/students/:id/edit' render={({match, history}) =>  <EditStudent id={match.params.id} history={history} /> } />
-            <Route path='/campuses' exact component={ Campuses } />
-            <Route path='/campuses/create' render={({history}) =>  <CreateCampus history={history} /> } />
-            <Route path='/campuses/:id' exact render={({ match, history }) =>  <Campus id={match.params.id} history={history} /> } />
-            <Route path='/campuses/:id/edit' render={({ match, history }) =>  <EditCampus id={match.params.id} history={history} /> } />
-          </Switch>
+            <Switch>
+              <Route path='/' exact component={ Home } />
+              <Route path='/students' exact component={ Students } />
+              <Route path='/students/create' exact render={({history}) =>  <CreateStudent history={history} /> } />
+              <Route path='/students/:id' exact render={({match, history}) =>  <Student history={history} id={match.params.id} /> } />
+              <Route path='/students/:id/edit' render={({match, history}) =>  <EditStudent id={match.params.id} history={history} /> } />
+              <Route path='/campuses' exact component={ Campuses } />
+              <Route path='/campuses/create' render={({history}) =>  <CreateCampus history={history} /> } />
+              <Route path='/campuses/:id' exact render={({ match, history }) =>  <Campus id={match.params.id} history={history} /> } />
+              <Route path='/campuses/:id/edit' render={({ match, history }) =>  <EditCampus id={match.params.id} history={history} /> } />
+            </Switch>
           </div>
         </div>
       </Router>

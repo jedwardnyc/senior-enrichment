@@ -7,22 +7,19 @@
     "seed": "node seed.js",
     "postinstall": "npm run webpack && npm run seed",
     "webpack": "./node_modules/webpack/bin/webpack.js",
-    "start:dev": "npm run seed && npm run webpack -- -w & nodemon server/index",
-    "start": "node server/index",
+    "start:dev": "npm run seed && npm run webpack -- -w & nodemon server",
+    "start": "node server",
     "count": "cloc client/ public/style.css server/ seed.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jedwardnyc/senior-enrichment.git"
-  },
+  "repository": "jedwardnyc/senior-enrichment",
   "author": "Jacob Rico",
+  "homepage": "https://senior-enrich-project.herokuapp.com",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
     "express": "^4.16.2",
-    "normalize.css": "^8.0.0",
     "pg": "^7.4.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

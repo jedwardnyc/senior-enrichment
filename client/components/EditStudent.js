@@ -83,9 +83,10 @@ class EditStudent extends Component {
   };
 };
 
-const mapStateToProps = ({ students, errors }, ownProps) => {
+const mapStateToProps = ({ students, errors }, { id }) => {
+  const student = students.find(student => student.id === id*1 )
   return {
-    student: students.find(student => student.id === ownProps.id*1 ),
+    student,
     errors
   };
 };

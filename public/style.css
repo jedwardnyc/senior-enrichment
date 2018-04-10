@@ -15,11 +15,6 @@
   src: url('./fonts/nasalization.ttf');
 }
 
-@font-face {
-  font-family: hacka;
-  src: url('./fonts/hacka.ttf');
-}
-
 /* Global */
 
 * {
@@ -32,20 +27,7 @@ body {
   font-family: nasalization;
 }
 
-a {
-  color: #020402;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #FFFFFF;
-}
-
-label {
- font-weight: bold;
-}
-
-#dropdown{
+.dropdown{
   width: 600px;
   height: 30px;
 }
@@ -78,6 +60,19 @@ label {
   flex: 6;
 }
 
+a {
+  color: #020402;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #FFFFFF;
+}
+
+label {
+ font-weight: bold;
+}
+
 /* Edit Pages */
 
 .edit {
@@ -103,7 +98,7 @@ label {
   border-color: limegreen;
 }
 
-.edit #dropdown {
+.edit .dropdown {
   background-color: #020402;
   color: limegreen;
   font-family: whiterabbit;
@@ -143,13 +138,13 @@ label {
   align-items: center;
 }
 
-#homeButtons {
+.homeButtons {
   display: flex;
   justify-content: center;
   font-family: nasalization;
 }
 
-#homeHeader {
+.homeHeader {
   flex-direction: column;
   align-items: center;
   background-image: url('./images/MHI_home.jpg');
@@ -161,7 +156,9 @@ label {
   text-align: center;
 }
 
-#homeInfo {
+.homeInfo {
+  display: flex;
+  margin: inherit auto;
   flex-direction: column;
 }
 
@@ -193,7 +190,7 @@ label {
   color: black;
 }
 
-#campusInfo {
+.campusInfo {
   display: flex;
   flex-direction: column;
   width: 50%; 
@@ -237,6 +234,10 @@ label {
 
 /* Students */
 
+#student .campusItem {
+  width: 100%; 
+}
+
 #studentDetail {
   display: flex; 
   flex-direction: column;
@@ -246,15 +247,6 @@ label {
   padding: 20px 10px;
   margin: 30px 25px;
   color: black;
-}
-
-#student .campusItem {
-  width: 100%; 
-}
-
-#studentInfo {
-  width: 50%;
-  margin-top: 10px;
 }
 
 #studentItem {
@@ -269,12 +261,6 @@ label {
   color: black;
 }
 
-#studentsList {
-  display: flex; 
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
 .studentButtons {
   justify-content: flex-end;
   align-items: flex-end;
@@ -284,18 +270,22 @@ label {
   border-radius: 50%;
 }
 
+.studentInfo {
+  width: 50%;
+  margin-top: 10px;
+}
+
+.studentsList {
+  display: flex; 
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .studentsPadding {
   padding-bottom: 120px;
 }
 
 /* Nav */
-
-nav a {
-  color: #FAE8EB;
-  text-decoration: none;
-  font-family: corroded;
-  text-transform: uppercase;
-}
 
 #nav {
   background-color: #020402;
@@ -305,14 +295,17 @@ nav a {
   margin-top: 25px;
 }
 
+nav a {
+  color: #FAE8EB;
+  text-decoration: none;
+  font-family: corroded;
+  text-transform: uppercase;
+}
 
 /* Flex Breakpoints */
 
 @media (max-width:1000px){
-  #dropdown {
-    width: 400px;
-  }
-
+  
   #studentItem {
     width: 40%;  
     padding-bottom: 15px;
@@ -324,6 +317,10 @@ nav a {
     padding-bottom: 50px;
   }
 
+  .dropdown {
+    width: 400px;
+  }
+
   .email {
     visibility: hidden;
     display: none;
@@ -331,46 +328,6 @@ nav a {
 }
 
 @media (max-width: 660px){
-  .campusItem {
-    display: block;
-    /* width: 100%;   */
-    padding-bottom: 15px;
-    margin: inherit auto;
-  }
-
-  #studentItem {
-    width: 100%;  
-    padding-bottom: 15px;
-    margin: inherit auto;
-  }
-
-  #studentInfo {
-    font-size: 40%;
-  }
-
-  .homeText {
-    font-size: 70px;
-  }
-
-  .homeSubtext {
-    font-size: 40px;
-  }
-
-  .email, .studentImage, .campusImage {
-    visibility: hidden;
-    display: none;
-  }
-
-  .flex { 
-    display: block;
-  }
-
-  #dropdown, .edit #dropdown {
-    width: 200px;
-    color: #020402;
-    background-color: #FAE8EB;
-    border-color: #020402
-  }
 
   #campusDetail {
     text-align: center;
@@ -382,7 +339,48 @@ nav a {
     display:block;
   }
 
+  #studentItem {
+    width: 100%;  
+    padding-bottom: 15px;
+    margin: inherit auto;
+  }
+
+  .campusItem {
+    display: block;
+    /* width: 100%;   */
+    padding-bottom: 15px;
+    margin: inherit auto;
+  }
+
+  .dropdown, .edit .dropdown {
+    width: 200px;
+    color: #020402;
+    background-color: #FAE8EB;
+    border-color: #020402
+  }
+
+  .email, .studentImage, .campusImage {
+    visibility: hidden;
+    display: none;
+  }
+
+  .flex { 
+    display: block;
+  }
+
+  .homeText {
+    font-size: 70px;
+  }
+
+  .homeSubtext {
+    font-size: 40px;
+  }
+
   .studentButtons {
     flex-direction: column;
+  }
+
+  .studentInfo {
+    font-size: 40%;
   }
 }

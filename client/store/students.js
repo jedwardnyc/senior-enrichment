@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_STUDENTS, CREATE_STUDENT, EDIT_STUDENT, DELETE_STUDENT } from './constants';
+import { GET_STUDENTS, CREATE_STUDENT, UPDATE_STUDENT, DELETE_STUDENT } from './constants';
 import { errorHandler } from './errors';
 
 export const fetchStudents = () => {
@@ -8,7 +8,7 @@ export const fetchStudents = () => {
       .then(res => res.data)
       .then(students => dispatch({ type: GET_STUDENTS, students}))
       .catch(err => dispatch(errorHandler(err.response.data.errors)))
-  }
+  };
 };
 
 export const createStudent = (student, history) => {
@@ -20,7 +20,21 @@ export const createStudent = (student, history) => {
         history.push(`/students/${student.id}`)
       })
       .catch(err => dispatch(errorHandler(err.response.data.errors)))
-  }
+  };
+};
+
+export const updateStudent = (student, history, path) => {
+  return (dispatch) => {
+    return axios.put(`/api/students/${student.id}`, student)
+      .then(res => res.data)
+      .then(student => {
+        dispatch({ type: UPDATE_STUDENT, student })
+        if(path === 'students') {
+          history.push(`/students/${student.id}`)
+        }
+      })
+      .catch(err => dispatch(errorHandler(err.response.data.errors)))
+  };
 };
 
 export const deleteStudent = (student, history) => {
@@ -31,21 +45,7 @@ export const deleteStudent = (student, history) => {
         history.push('/students')
       })
       .catch(err => dispatch(errorHandler(err.response.data.errors)))
-  }
-};
-
-export const updateStudent = (student, history, path) => {
-  return (dispatch) => {
-    return axios.put(`/api/students/${student.id}`, student)
-      .then(res => res.data)
-      .then(student => {
-        dispatch({ type: EDIT_STUDENT, student })
-        if(path === 'students') {
-          history.push(`/students/${student.id}`)
-        }
-      })
-      .catch(err => dispatch(errorHandler(err.response.data.errors)))
-  }
+  };
 };
 
 const studentReducer = (state = [], action) => {
@@ -54,13 +54,13 @@ const studentReducer = (state = [], action) => {
       return action.students;
     case CREATE_STUDENT: 
       return [...state, action.student];
+    case UPDATE_STUDENT: 
+      return state.map(student => student.id === action.student.id ? action.student : student);
     case DELETE_STUDENT: 
       return state.filter(student => student.id !== action.student.id*1);
-    case EDIT_STUDENT: 
-      return state.map(student => student.id === action.student.id ? action.student : student)
     default:
       return state;
-  }
+  };
 };
 
 export default studentReducer;

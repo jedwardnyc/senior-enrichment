@@ -97,7 +97,7 @@ class EditCampus extends Component{
       <div>
         <h2> Transfer a student to this campus: </h2>
         <form onSubmit={this.transferStudent} className='form-inline'>
-          <select id='dropdown' className='form-control' onChange={(ev) => this.setState({ student: this.props.students.find(student => student.id === ev.target.value*1)})}>
+          <select className='form-control dropdown' onChange={(ev) => this.setState({ student: this.props.students.find(student => student.id === ev.target.value*1)})}>
             <option value='-1'> --- Select a Student --- </option>
             {
               unenrolledStudents.map(student => <option key={student.id} value={student.id}> {student.fullName} </option> )
@@ -107,12 +107,12 @@ class EditCampus extends Component{
         </form>
       </div>
       <h2 className='flex'> Students on Campus: </h2>
-      <div id='studentsList' className='studentsPadding'>
-      { 
-        studentArr.length ? 
-         studentArr.map(student => <StudentItem key={student.id} path={location.hash} student={student}/>) 
-         : <div className='studentsPadding'> There are no students currently enrolled at {campus.name} </div>
-      }
+      <div className='studentsPadding studentsList'>
+        { 
+          studentArr.length ? 
+          studentArr.map(student => <StudentItem key={student.id} path={location.hash} student={student}/>) 
+          : <div className='studentsPadding'> There are no students currently enrolled at {campus.name} </div>
+        }
       </div>
     </div>
     )
