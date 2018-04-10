@@ -237,7 +237,7 @@ label {
 #student .campusItem {
   width: 100%; 
 }
-
+ 
 #studentDetail {
   display: flex; 
   flex-direction: column;
