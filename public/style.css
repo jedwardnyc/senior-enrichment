@@ -176,11 +176,6 @@ label {
 
 /* Campuses */ 
 
-#campuses {
-  display: flex; 
-  justify-content: center;
-}
-
 #campusDetail {
   display: flex;
   padding: 20px;
@@ -188,6 +183,24 @@ label {
   background-color: #A9A9A9;
   border-radius: 5px;
   color: black;
+}
+
+#campusesList {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-around; 
+  padding-right: 15px;
+}
+
+#campusStudents {
+  display: flex;
+  margin-bottom: 45px;
+}
+
+.campusButtons {
+  display: flex; 
+  align-items: flex-end; 
+  justify-content: flex-end;
 }
 
 .campusInfo {
@@ -207,24 +220,6 @@ label {
   border-radius: 5px;
   color: black;
   width: 45%; 
-}
-
-#campusesList {
-  display: flex; 
-  flex-wrap: wrap; 
-  justify-content: space-between; 
-  padding-right: 15px;
-}
-
-#campusStudents {
-  display: flex;
-  margin-bottom: 45px;
-}
-
-.campusButtons {
-  display: flex; 
-  align-items: flex-end; 
-  justify-content: flex-end;
 }
 
 .campusImage {
@@ -304,6 +299,7 @@ nav a {
 
 /* Flex Breakpoints */
 
+/* Tablet */
 @media (max-width:1000px){
   
   #studentItem {
@@ -319,6 +315,7 @@ nav a {
 
   .dropdown {
     width: 400px;
+    margin-bottom: 5px;
   }
 
   .email {
@@ -327,16 +324,25 @@ nav a {
   }
 }
 
+
+/* Mobile */
 @media (max-width: 660px){
 
   #campusDetail {
     text-align: center;
-    justify-content: center;
-    flex-basis: auto;
+    margin: 0 auto;
   }
 
-  #campusInfo{
-    display:block;
+  .campusInfo {
+    text-align: center;
+    margin: inherit auto;
+    width: 100%;
+  }
+
+  #campusStudents {
+    display: block;
+    margin: 45px auto;
+    text-align: center;
   }
 
   #studentItem {
@@ -345,11 +351,19 @@ nav a {
     margin: inherit auto;
   }
 
+  .campusButtons {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .campusInfo{
+    display:block;
+    margin: 5px auto 0 auto;
+  }
+
   .campusItem {
     display: block;
-    /* width: 100%;   */
     padding-bottom: 15px;
-    margin: inherit auto;
   }
 
   .dropdown, .edit .dropdown {
@@ -366,21 +380,28 @@ nav a {
 
   .flex { 
     display: block;
+    margin: inherit auto;
+    text-align: center;
+  }
+
+  #home h4 {
+    font-size: 18px;
   }
 
   .homeText {
-    font-size: 70px;
+    font-size: 60px;
   }
 
   .homeSubtext {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   .studentButtons {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .studentInfo {
     font-size: 40%;
+    width: 100%;
   }
 }

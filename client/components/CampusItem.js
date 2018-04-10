@@ -25,7 +25,7 @@ class CampusItem extends Component {
               <h6 className='center'>{students.length} Enrolled Students</h6>
               : null 
             }
-            <div>
+            <div className='campusButtons'>
               <Link to={`/campuses/${campus.id}/edit`}><button className='btn btn-dark'>Edit</button></Link>&nbsp;
               <button onClick={() => deleteCampus(campus)} className='btn btn-danger'>Delete</button>
             </div>
