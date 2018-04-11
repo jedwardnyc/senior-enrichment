@@ -55,7 +55,7 @@ class EditCampus extends Component{
         <div>
           <input  
             value={imageURL}
-            onChange={ev => this.setState({ imageURL: ev.target.value })} 
+            onChange={ev => this.setState({ imageURL: ev.target.value || undefined})} 
             className='form-control'/>
         </div>
         <br />

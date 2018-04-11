@@ -42,7 +42,7 @@ class CreateStudent extends Component {
           <br />
           <label>Avatar URL: </label>
           <input 
-            onChange={ev => ev.target.value ? this.setState({ imageURL: ev.target.value }) : null}
+            onChange={ev => this.setState({ imageURL: ev.target.value })}
             className='form-control' />
           <br />
           <label>Email: </label>

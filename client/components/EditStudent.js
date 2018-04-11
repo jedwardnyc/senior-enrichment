@@ -46,9 +46,9 @@ class EditStudent extends Component {
           <br />
           <label>Avatar URL: </label>
           <input 
-            onChange={ev => this.setState({ imageURL: ev.target.value })}
+            onChange={ev => this.setState({ imageURL: ev.target.value || undefined })}
             className='form-control' 
-            value={imageURL || './public/images/default_student.jpg'} />
+            value={imageURL} />
           <br />
           <label>Email: </label>
           <div>
