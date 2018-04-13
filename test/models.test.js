@@ -96,8 +96,10 @@ describe("Models", () => {
         expect(campus.name).to.equal("Africa Campus");
       });
     });
-  });
   
+  });
 });
+  
+
 
 

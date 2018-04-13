@@ -25,7 +25,7 @@ class EditStudent extends Component {
   render(){
     const { student, errors } = this.props;
     const { fullName, imageURL, gpa, email, firstName, lastName } = this.state;
-    if (!this.props.student) return null
+    if (!student) return null
     return (
       <div className='navMargin edit'>
         <h1> Edit {student.fullName}? </h1>

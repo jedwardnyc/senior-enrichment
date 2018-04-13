@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createCampus } from '../store';
+import { createCampus, clearErrors } from '../store';
 
 class CreateCampus extends Component {
 
@@ -13,6 +13,10 @@ class CreateCampus extends Component {
   onSubmit(ev){
     ev.preventDefault();
     this.props.createCampus(this.state);
+  };
+
+  componentWillUnmount(){
+    this.props.clearErrors();
   };
 
   render(){
@@ -81,7 +85,8 @@ const mapStateToProps = ({ errors }) => {
 
 const mapDispatchToProps = (dispatch, {history}) => {
   return {
-    createCampus: (campus) => dispatch(createCampus(campus, history))
+    createCampus: (campus) => dispatch(createCampus(campus, history)),
+    clearErrors: () => dispatch(clearErrors())
   };
 };
 
