@@ -5,8 +5,8 @@ const faker = require('faker');
 const avatar = require('cartoon-avatar');
 const chance = require('chance')(12345);
 
-const numOfStudents = 0;
-const numOfCampuses = 0;
+const numOfStudents = 1;
+const numOfCampuses = 1;
 
 const doTimes = (n, func) => {
   const result = [];

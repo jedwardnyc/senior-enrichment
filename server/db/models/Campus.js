@@ -6,7 +6,10 @@ const Campus = conn.define('campus', {
     allowNull: false,
     type: Sequelize.STRING,
     validate: {
-      notEmpty: true
+      notEmpty: {
+        args: true,
+        msg: 'A name is required'
+      }
     }
   },
   imageURL: {
@@ -20,14 +23,20 @@ const Campus = conn.define('campus', {
     allowNull: false,
     type: Sequelize.STRING,
     validate: {
-      notEmpty: true
+      notEmpty: {
+        args: true,
+        msg: 'A street address is required'
+      }
     }
   },
   addressLine2: {
     allowNull: false,
     type: Sequelize.STRING,
     validate: {
-      notEmpty: true
+      notEmpty: {
+        args: true,
+        msg: 'A city, state, and zip are required'
+      }
     }
   }
 });

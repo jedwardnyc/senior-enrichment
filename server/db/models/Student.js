@@ -23,7 +23,7 @@ const Student = conn.define('student', {
     validate:{
       isEmail: {
         args: true,
-        msg: "Must be a valid e-mail"
+        msg: 'Must be a valid e-mail'
       },
       notEmpty: true
     }
@@ -34,11 +34,11 @@ const Student = conn.define('student', {
     validate: {
       min: {
         args: [0],
-        msg: "GPA must be higher than 0"
+        msg: 'GPA must be higher than 0'
       },
       max: {
         args: [4],
-        msg: "GPA cannot be greater than 4.0"
+        msg: 'GPA cannot be greater than 4.0'
       }
     }
   },
