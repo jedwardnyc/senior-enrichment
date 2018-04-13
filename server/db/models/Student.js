@@ -1,20 +1,25 @@
 const Sequelize = require('sequelize');
 const conn = require('../conn');
-const avatar = require('cartoon-avatar');
 
 const Student = conn.define('student', {
   firstName: {
     allowNull: false,
     type: Sequelize.STRING,
     validate: {
-      notEmpty: true
+      notEmpty: {
+        args: true,
+        msg: 'Frist Name is required'
+      }
     }
   },
   lastName: {
     allowNull: false,
     type: Sequelize.STRING,
     validate: {
-      notEmpty: true
+      notEmpty: {
+        args: true,
+        msg: 'Last Name is required'
+      }
     }
   },
   email: {
