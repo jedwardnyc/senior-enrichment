@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Student, Campus } = require('../db/models');
+const { Student } = require('../db/models');
 
 // reminder that all of these routes start with api/students
 router.get('/', (req,res,next) => {
